@@ -2,6 +2,8 @@
 
 SmallyMouse2 is the AT90USB1287 firmware source code and KiCAD schematic/PCB design for the SmallyMouse2 project.
 
+The schematic and PCB design in `KiCAD/` are in the KiCad 10 file format and require KiCad 10 or later to open. The original KiCad 4 files are available in the git history (commit `66cf90d` and earlier).
+
 ## Motivation
 
 SmallyMouse2 is a project that creates a USB mouse adaptor for retro computers that use quadrature mouse input including the Acorn BBC Micro, Acorn Master series, Commodore Amiga, Atari ST, busmouse compatible computers and many more.  SmallyMouse2 provides both a generic mouse output header (for attaching mouse to retro computer cables) and an IDC connector suitable for use with Acorn 8-bit user-ports.  SmallyMouse2 also features a configurable quadrature rate limiter that prevents VIA overrun when in use with slower 8-bit machines.
