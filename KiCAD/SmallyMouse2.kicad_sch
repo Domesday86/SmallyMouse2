@@ -4449,23 +4449,43 @@
 	)
 	(wire
 		(pts
-			(xy 215.9 101.6) (xy 227.33 101.6)
+			(xy 215.9 101.6) (xy 224.79 101.6)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "373d5410-9797-4d0b-b1fe-0e9765ca5833")
+		(uuid "a45354cc-dca9-427a-869a-6e563214dbc5")
 	)
 	(wire
 		(pts
-			(xy 224.79 99.06) (xy 224.79 104.14)
+			(xy 224.79 101.6) (xy 227.33 101.6)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "37565da2-ec85-4563-b11a-b37da60d4f54")
+		(uuid "9d98da9e-49bf-4cb6-acc8-5206402d699d")
+	)
+	(wire
+		(pts
+			(xy 224.79 99.06) (xy 224.79 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4bfcb08b-3c5c-40d0-bc8d-70e5425aab56")
+	)
+	(wire
+		(pts
+			(xy 224.79 101.6) (xy 224.79 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0a2280bb-f0e0-437b-9098-611545cfa605")
 	)
 	(wire
 		(pts
@@ -4509,13 +4529,23 @@
 	)
 	(wire
 		(pts
-			(xy 217.17 124.46) (xy 227.33 124.46)
+			(xy 217.17 124.46) (xy 224.79 124.46)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "44fb945b-276a-43d0-bbe7-5675171b1a29")
+		(uuid "f5290f53-84b5-41d7-8e87-90740cc0191b")
+	)
+	(wire
+		(pts
+			(xy 224.79 124.46) (xy 227.33 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c135675b-9949-43e8-888c-a24f9ad8865b")
 	)
 	(wire
 		(pts
@@ -5159,13 +5189,23 @@
 	)
 	(wire
 		(pts
-			(xy 224.79 106.68) (xy 224.79 127)
+			(xy 224.79 106.68) (xy 224.79 124.46)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "beeee08c-9040-4a2a-af9a-62b154fcd570")
+		(uuid "684cc71d-0977-4f0d-bcbf-47d8aeb37221")
+	)
+	(wire
+		(pts
+			(xy 224.79 124.46) (xy 224.79 127)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "af0a362a-7055-4dea-b2e9-94f40b6fae1c")
 	)
 	(wire
 		(pts
@@ -7659,10 +7699,10 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(in_pos_files yes)
+		(in_pos_files no)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000058b5e194")
-		(property "Reference" "TCK"
+		(property "Reference" "TP5"
 			(at 53.34 106.68 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7720,7 +7760,7 @@
 		(instances
 			(project "SmallyMouse2"
 				(path "/3243e337-5b75-4765-b867-6e38ad1f5f8b"
-					(reference "TCK")
+					(reference "TP5")
 					(unit 1)
 				)
 			)
@@ -7734,10 +7774,10 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(in_pos_files yes)
+		(in_pos_files no)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000058b5e42f")
-		(property "Reference" "TMS"
+		(property "Reference" "TP2"
 			(at 45.72 109.22 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7795,7 +7835,7 @@
 		(instances
 			(project "SmallyMouse2"
 				(path "/3243e337-5b75-4765-b867-6e38ad1f5f8b"
-					(reference "TMS")
+					(reference "TP2")
 					(unit 1)
 				)
 			)
@@ -7809,10 +7849,10 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(in_pos_files yes)
+		(in_pos_files no)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000058b5e49a")
-		(property "Reference" "TDO"
+		(property "Reference" "TP6"
 			(at 53.34 111.76 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7870,7 +7910,7 @@
 		(instances
 			(project "SmallyMouse2"
 				(path "/3243e337-5b75-4765-b867-6e38ad1f5f8b"
-					(reference "TDO")
+					(reference "TP6")
 					(unit 1)
 				)
 			)
@@ -7884,10 +7924,10 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(in_pos_files yes)
+		(in_pos_files no)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000058b5e4f3")
-		(property "Reference" "TDI"
+		(property "Reference" "TP3"
 			(at 45.72 114.3 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7945,7 +7985,7 @@
 		(instances
 			(project "SmallyMouse2"
 				(path "/3243e337-5b75-4765-b867-6e38ad1f5f8b"
-					(reference "TDI")
+					(reference "TP3")
 					(unit 1)
 				)
 			)
@@ -7959,10 +7999,10 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(in_pos_files yes)
+		(in_pos_files no)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000058b5ee0b")
-		(property "Reference" "RST"
+		(property "Reference" "TP1"
 			(at 45.72 102.87 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7973,7 +8013,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Value" "~{RESET}"
+		(property "Value" "RST"
 			(at 46.99 102.87 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8020,7 +8060,7 @@
 		(instances
 			(project "SmallyMouse2"
 				(path "/3243e337-5b75-4765-b867-6e38ad1f5f8b"
-					(reference "RST")
+					(reference "TP1")
 					(unit 1)
 				)
 			)
@@ -8034,10 +8074,10 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(in_pos_files yes)
+		(in_pos_files no)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000058b5f2b1")
-		(property "Reference" "5V"
+		(property "Reference" "TP7"
 			(at 53.34 116.84 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8048,7 +8088,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Value" "+5V"
+		(property "Value" "5V"
 			(at 54.61 116.84 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8095,7 +8135,7 @@
 		(instances
 			(project "SmallyMouse2"
 				(path "/3243e337-5b75-4765-b867-6e38ad1f5f8b"
-					(reference "5V")
+					(reference "TP7")
 					(unit 1)
 				)
 			)
@@ -8109,10 +8149,10 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(in_pos_files yes)
+		(in_pos_files no)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000058b5f32a")
-		(property "Reference" "GND"
+		(property "Reference" "TP4"
 			(at 45.72 119.38 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8170,7 +8210,7 @@
 		(instances
 			(project "SmallyMouse2"
 				(path "/3243e337-5b75-4765-b867-6e38ad1f5f8b"
-					(reference "GND")
+					(reference "TP4")
 					(unit 1)
 				)
 			)

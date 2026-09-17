@@ -141,7 +141,16 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/00000000-0000-0000-0000-000058a4f9fd")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -259,7 +268,9 @@
 			(at -1.25 0 90)
 			(size 1.5 1.25)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(C1-Pad1)")
+			(net "Net-(IC1-Xtal1)")
+			(pinfunction "~_1")
+			(pintype "passive")
 			(uuid "6d2750a8-a89d-45d2-9fd5-47b3ae8997e8")
 		)
 		(pad "2" smd rect
@@ -267,6 +278,8 @@
 			(size 1.5 1.25)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
+			(pinfunction "~_2")
+			(pintype "passive")
 			(uuid "05cb4dda-c923-44d0-a53f-faae1161e7f9")
 		)
 		(embedded_fonts no)
@@ -332,7 +345,16 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/00000000-0000-0000-0000-000058a4fa4d")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -450,7 +472,9 @@
 			(at -1.25 0 90)
 			(size 1.5 1.25)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(C2-Pad1)")
+			(net "Net-(IC1-Xtal2)")
+			(pinfunction "~_1")
+			(pintype "passive")
 			(uuid "b2f5ec2d-4538-44f4-8d6f-db16e3fd7736")
 		)
 		(pad "2" smd rect
@@ -458,6 +482,8 @@
 			(size 1.5 1.25)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
+			(pinfunction "~_2")
+			(pintype "passive")
 			(uuid "a9f93642-eb18-4e60-ada6-95a5b4bad144")
 		)
 		(embedded_fonts no)
@@ -523,7 +549,16 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/00000000-0000-0000-0000-000058a4f61a")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -641,7 +676,9 @@
 			(at -1.25 0 180)
 			(size 1.5 1.25)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(C3-Pad1)")
+			(net "Net-(IC1-ARef)")
+			(pinfunction "~_1")
+			(pintype "passive")
 			(uuid "c69b7c4a-18fc-4535-b1aa-d5db74d9abce")
 		)
 		(pad "2" smd rect
@@ -649,6 +686,8 @@
 			(size 1.5 1.25)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
+			(pinfunction "~_2")
+			(pintype "passive")
 			(uuid "b6f121aa-7b6d-4c17-83c1-283307a5c81a")
 		)
 		(embedded_fonts no)
@@ -714,7 +753,16 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/00000000-0000-0000-0000-000058a4f76f")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -832,7 +880,9 @@
 			(at -1.25 0 90)
 			(size 1.5 1.25)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(C4-Pad1)")
+			(net "Net-(IC1-UCap)")
+			(pinfunction "~_1")
+			(pintype "passive")
 			(uuid "f46f6eb2-fd7e-4046-8269-488bca16209f")
 		)
 		(pad "2" smd rect
@@ -840,6 +890,8 @@
 			(size 1.5 1.25)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
+			(pinfunction "~_2")
+			(pintype "passive")
 			(uuid "906e9223-5c39-44ad-9ce5-ddadac3dc278")
 		)
 		(embedded_fonts no)
@@ -905,7 +957,16 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/00000000-0000-0000-0000-000058a4fd2f")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -1024,6 +1085,8 @@
 			(size 1.5 1.25)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
+			(pinfunction "~_1")
+			(pintype "passive")
 			(uuid "c551fd49-242f-4642-8b31-73e237a8abdb")
 		)
 		(pad "2" smd rect
@@ -1031,6 +1094,8 @@
 			(size 1.5 1.25)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "+5V")
+			(pinfunction "~_2")
+			(pintype "passive")
 			(uuid "7f3c32bf-ed03-41e2-ac19-cfd6cfd01a01")
 		)
 		(embedded_fonts no)
@@ -1096,7 +1161,16 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/00000000-0000-0000-0000-000058a4fde1")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -1215,6 +1289,8 @@
 			(size 1.5 1.25)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
+			(pinfunction "~_1")
+			(pintype "passive")
 			(uuid "cb284b87-3149-41cc-81d5-3989dee96af4")
 		)
 		(pad "2" smd rect
@@ -1222,6 +1298,8 @@
 			(size 1.5 1.25)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "+5V")
+			(pinfunction "~_2")
+			(pintype "passive")
 			(uuid "158833f8-7ae8-4df7-9ae9-1876e367dadf")
 		)
 		(embedded_fonts no)
@@ -1287,7 +1365,16 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/00000000-0000-0000-0000-000058a4fe1e")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -1406,6 +1493,8 @@
 			(size 1.5 1.25)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
+			(pinfunction "~_1")
+			(pintype "passive")
 			(uuid "b18961e0-6785-4928-9452-4b935f50510c")
 		)
 		(pad "2" smd rect
@@ -1413,6 +1502,8 @@
 			(size 1.5 1.25)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "+5V")
+			(pinfunction "~_2")
+			(pintype "passive")
 			(uuid "c3f1f151-b341-4dae-adb6-06d6d258d0a2")
 		)
 		(embedded_fonts no)
@@ -1478,7 +1569,16 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/00000000-0000-0000-0000-0000590f2458")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -1597,6 +1697,8 @@
 			(size 1.5 1.25)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
+			(pinfunction "~_1")
+			(pintype "passive")
 			(uuid "f37e7958-13fa-46fd-bb38-7f34f9e2c755")
 		)
 		(pad "2" smd rect
@@ -1604,6 +1706,8 @@
 			(size 1.5 1.25)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "+5V")
+			(pinfunction "~_2")
+			(pintype "passive")
 			(uuid "ac84defc-7300-43f0-b829-cec066f20272")
 		)
 		(embedded_fonts no)
@@ -1669,7 +1773,16 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/00000000-0000-0000-0000-0000590f245e")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -1788,6 +1901,8 @@
 			(size 1.5 1.25)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
+			(pinfunction "~_1")
+			(pintype "passive")
 			(uuid "5c098681-10b8-4ba7-856b-e8b4374e81df")
 		)
 		(pad "2" smd rect
@@ -1795,6 +1910,8 @@
 			(size 1.5 1.25)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "+5V")
+			(pinfunction "~_2")
+			(pintype "passive")
 			(uuid "d3610a94-f41d-45ad-a6ca-48a6a7dcb9eb")
 		)
 		(embedded_fonts no)
@@ -1860,7 +1977,16 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/00000000-0000-0000-0000-0000590f2464")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -1979,6 +2105,8 @@
 			(size 1.5 1.25)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
+			(pinfunction "~_1")
+			(pintype "passive")
 			(uuid "d1b46e49-664e-4a0f-a4b6-12863ab318df")
 		)
 		(pad "2" smd rect
@@ -1986,6 +2114,8 @@
 			(size 1.5 1.25)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "+5V")
+			(pinfunction "~_2")
+			(pintype "passive")
 			(uuid "8d8d3686-5ecd-4999-9acb-b732bc1ef310")
 		)
 		(embedded_fonts no)
@@ -2052,6 +2182,19 @@
 			)
 		)
 		(path "/00000000-0000-0000-0000-000058a4e37e")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "20" "24" "23" "62" "5" "4" "8" "7" "3" "6" "61" "60" "59" "58"
+					"57" "56" "55" "54" "33" "34" "43" "9" "18" "19" "1" "2" "21" "63" "52"
+					"53" "64" "22" "51" "49" "50" "48" "47" "46" "45" "44" "10" "11" "12"
+					"13" "14" "15" "16" "17" "35" "36" "37" "38" "39" "40" "41" "42" "25"
+					"26" "27" "28" "29" "30" "31" "32"
+				)
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -2249,14 +2392,18 @@
 			(at -7.7 -6)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad1)")
+			(net "unconnected-(IC1-(INT.6{slash}AIN.0)PE6-Pad1)")
+			(pinfunction "(INT.6/AIN.0)PE6_1")
+			(pintype "bidirectional+no_connect")
 			(uuid "316f79cb-b005-4715-b9c2-37181cad3529")
 		)
 		(pad "2" smd rect
 			(at -7.7 -5.2)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad2)")
+			(net "unconnected-(IC1-(INT.7{slash}AIN.1{slash}UVcon)PE7-Pad2)")
+			(pinfunction "(INT.7/AIN.1/UVcon)PE7_2")
+			(pintype "bidirectional+no_connect")
 			(uuid "56a208e5-1fb8-4431-b50e-ff0521da4266")
 		)
 		(pad "3" smd rect
@@ -2264,20 +2411,26 @@
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "+5V")
+			(pinfunction "UVcc_3")
+			(pintype "power_in")
 			(uuid "bb247c9b-d18d-4e6a-88e4-e09f7413c27c")
 		)
 		(pad "4" smd rect
 			(at -7.7 -3.6)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad4)")
+			(net "Net-(IC1-D-)")
+			(pinfunction "D-_4")
+			(pintype "bidirectional")
 			(uuid "dc576295-d61d-4c18-a581-2e7529631761")
 		)
 		(pad "5" smd rect
 			(at -7.7 -2.8)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad5)")
+			(net "Net-(IC1-D+)")
+			(pinfunction "D+_5")
+			(pintype "bidirectional")
 			(uuid "49493a48-0a75-4778-8691-041ff4832ca3")
 		)
 		(pad "6" smd rect
@@ -2285,13 +2438,17 @@
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
+			(pinfunction "UGnd_6")
+			(pintype "power_in")
 			(uuid "76a00e0d-f1ca-467c-801c-b65e7fd25a81")
 		)
 		(pad "7" smd rect
 			(at -7.7 -1.2)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(C4-Pad1)")
+			(net "Net-(IC1-UCap)")
+			(pinfunction "UCap_7")
+			(pintype "bidirectional")
 			(uuid "45f53f2f-96c0-4d0e-a60e-8e1d0d753fa2")
 		)
 		(pad "8" smd rect
@@ -2299,90 +2456,116 @@
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "+5V")
+			(pinfunction "VBus_8")
+			(pintype "power_in")
 			(uuid "60cc96d6-4414-4a69-8edf-c671e7e9cd32")
 		)
 		(pad "9" smd rect
 			(at -7.7 0.4)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad9)")
+			(net "unconnected-(IC1-(IUID)PE3-Pad9)")
+			(pinfunction "(IUID)PE3_9")
+			(pintype "bidirectional+no_connect")
 			(uuid "5a4e292d-9462-4832-82c1-ec5df73cd003")
 		)
 		(pad "10" smd rect
 			(at -7.7 1.2)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad10)")
+			(net "unconnected-(IC1-(SS{slash}PCINT0)PB0-Pad10)")
+			(pinfunction "(SS/PCINT0)PB0_10")
+			(pintype "bidirectional+no_connect")
 			(uuid "adc52cdc-e01c-4ca0-b49e-f55a254bfd1d")
 		)
 		(pad "11" smd rect
 			(at -7.7 2)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad11)")
+			(net "unconnected-(IC1-(PCINT1{slash}SCLK)PB1-Pad11)")
+			(pinfunction "(PCINT1/SCLK)PB1_11")
+			(pintype "bidirectional+no_connect")
 			(uuid "cdadb98e-9381-446f-89af-95cd14508248")
 		)
 		(pad "12" smd rect
 			(at -7.7 2.8)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad12)")
+			(net "unconnected-(IC1-(PDI{slash}PCINT2{slash}MOSI)PB2-Pad12)")
+			(pinfunction "(PDI/PCINT2/MOSI)PB2_12")
+			(pintype "bidirectional+no_connect")
 			(uuid "3568c39d-9dee-49b9-9580-8204b8e03c4e")
 		)
 		(pad "13" smd rect
 			(at -7.7 3.6)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad13)")
+			(net "unconnected-(IC1-(PDO{slash}PCINT3{slash}MISO)PB3-Pad13)")
+			(pinfunction "(PDO/PCINT3/MISO)PB3_13")
+			(pintype "bidirectional+no_connect")
 			(uuid "5ced06ab-d8f9-4ff2-bfd9-55ad4132b675")
 		)
 		(pad "14" smd rect
 			(at -7.7 4.4)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad14)")
+			(net "unconnected-(IC1-(PCINT4{slash}OC.2A)PB4-Pad14)")
+			(pinfunction "(PCINT4/OC.2A)PB4_14")
+			(pintype "bidirectional+no_connect")
 			(uuid "7a2bb429-858d-4fb0-a789-ec3b40101447")
 		)
 		(pad "15" smd rect
 			(at -7.7 5.2)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad15)")
+			(net "unconnected-(IC1-(PCINT5{slash}OC.1A)PB5-Pad15)")
+			(pinfunction "(PCINT5/OC.1A)PB5_15")
+			(pintype "bidirectional+no_connect")
 			(uuid "08d72af0-59cf-4f72-b34e-8b7227fb1e91")
 		)
 		(pad "16" smd rect
 			(at -7.7 6)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad16)")
+			(net "unconnected-(IC1-(PCINT6{slash}OC.1B)PB6-Pad16)")
+			(pinfunction "(PCINT6/OC.1B)PB6_16")
+			(pintype "bidirectional+no_connect")
 			(uuid "18e53d3c-e74f-4458-8708-49d6182be251")
 		)
 		(pad "17" smd rect
 			(at -6 7.7 90)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad17)")
+			(net "unconnected-(IC1-(PCINT7{slash}OC.0A{slash}OC.1C)PB7-Pad17)")
+			(pinfunction "(PCINT7/OC.0A/OC.1C)PB7_17")
+			(pintype "bidirectional+no_connect")
 			(uuid "7b8ab552-ab70-46e0-bd25-d9d2be14e0d3")
 		)
 		(pad "18" smd rect
 			(at -5.2 7.7 90)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad18)")
+			(net "unconnected-(IC1-(INT4{slash}TOSC1)PE4-Pad18)")
+			(pinfunction "(INT4/TOSC1)PE4_18")
+			(pintype "bidirectional+no_connect")
 			(uuid "bda23c05-0021-45a5-9626-1d76b5dc933e")
 		)
 		(pad "19" smd rect
 			(at -4.4 7.7 90)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad19)")
+			(net "unconnected-(IC1-(INT.5{slash}TOSC2)PE5-Pad19)")
+			(pinfunction "(INT.5/TOSC2)PE5_19")
+			(pintype "bidirectional+no_connect")
 			(uuid "ba939143-712d-4d15-9270-0fa9234538da")
 		)
 		(pad "20" smd rect
 			(at -3.6 7.7 90)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad20)")
+			(net "Net-(IC1-~{RESET})")
+			(pinfunction "~{RESET}_20")
+			(pintype "input")
 			(uuid "86b1208e-7047-4d33-bb4a-328bb83c2948")
 		)
 		(pad "21" smd rect
@@ -2390,6 +2573,8 @@
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "+5V")
+			(pinfunction "Vcc_21")
+			(pintype "power_in")
 			(uuid "59841532-97c6-450f-b32e-ab5964b22057")
 		)
 		(pad "22" smd rect
@@ -2397,90 +2582,116 @@
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
+			(pinfunction "Gnd_22")
+			(pintype "power_in")
 			(uuid "33b3c8ee-eb94-4a40-9694-84917d29e4f9")
 		)
 		(pad "23" smd rect
 			(at -1.2 7.7 90)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(C2-Pad1)")
+			(net "Net-(IC1-Xtal2)")
+			(pinfunction "Xtal2_23")
+			(pintype "input")
 			(uuid "58d00968-5b78-4a5e-868c-fdb43cb60129")
 		)
 		(pad "24" smd rect
 			(at -0.4 7.7 90)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(C1-Pad1)")
+			(net "Net-(IC1-Xtal1)")
+			(pinfunction "Xtal1_24")
+			(pintype "input")
 			(uuid "0a813ab6-6484-4d93-8a09-b9efbc65410c")
 		)
 		(pad "25" smd rect
 			(at 0.4 7.7 90)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad25)")
+			(net "Net-(IC1-(OC0B{slash}SCL{slash}INT0)PD0)")
+			(pinfunction "(OC0B/SCL/INT0)PD0_25")
+			(pintype "bidirectional")
 			(uuid "e2ff9229-2e21-48fc-84c5-4383200d2ed9")
 		)
 		(pad "26" smd rect
 			(at 1.2 7.7 90)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad26)")
+			(net "Net-(IC1-(OC2B{slash}SDA{slash}INT1)PD1)")
+			(pinfunction "(OC2B/SDA/INT1)PD1_26")
+			(pintype "bidirectional")
 			(uuid "5e213ef2-df6b-4afc-b384-1b14ff1defc3")
 		)
 		(pad "27" smd rect
 			(at 2 7.7 90)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad27)")
+			(net "Net-(IC1-(RXD1{slash}INT2)PD2)")
+			(pinfunction "(RXD1/INT2)PD2_27")
+			(pintype "bidirectional")
 			(uuid "dc63dc3f-e317-441e-8bc1-193992987a58")
 		)
 		(pad "28" smd rect
 			(at 2.8 7.7 90)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad28)")
+			(net "Net-(IC1-(TXD1{slash}INT3)PD3)")
+			(pinfunction "(TXD1/INT3)PD3_28")
+			(pintype "bidirectional")
 			(uuid "642d599a-16b6-4926-b129-086f32d0be58")
 		)
 		(pad "29" smd rect
 			(at 3.6 7.7 90)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad29)")
+			(net "Net-(IC1-(ICP1)PD4)")
+			(pinfunction "(ICP1)PD4_29")
+			(pintype "bidirectional")
 			(uuid "13c938ec-a589-4de5-97cc-950879e3fe5d")
 		)
 		(pad "30" smd rect
 			(at 4.4 7.7 90)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad30)")
+			(net "Net-(IC1-(XCK1)PD5)")
+			(pinfunction "(XCK1)PD5_30")
+			(pintype "bidirectional")
 			(uuid "8692c77e-993c-489e-a950-523d1b1d9fcb")
 		)
 		(pad "31" smd rect
 			(at 5.2 7.7 90)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad31)")
+			(net "Net-(IC1-(T1)PD6)")
+			(pinfunction "(T1)PD6_31")
+			(pintype "bidirectional")
 			(uuid "9289efab-6d40-4c13-9a83-293381734c3b")
 		)
 		(pad "32" smd rect
 			(at 6 7.7 90)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad32)")
+			(net "Net-(IC1-(T0)PD7)")
+			(pinfunction "(T0)PD7_32")
+			(pintype "bidirectional")
 			(uuid "f120ada0-9468-4d97-acfc-4b4ee27e82d0")
 		)
 		(pad "33" smd rect
 			(at 7.7 6)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad33)")
+			(net "unconnected-(IC1-(~{WR})PE0-Pad33)")
+			(pinfunction "(~{WR})PE0_33")
+			(pintype "bidirectional+no_connect")
 			(uuid "de5d03f6-adda-47b5-b9f0-0c796bb22cee")
 		)
 		(pad "34" smd rect
 			(at 7.7 5.2)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad34)")
+			(net "unconnected-(IC1-(~{RD})PE1-Pad34)")
+			(pinfunction "(~{RD})PE1_34")
+			(pintype "bidirectional+no_connect")
 			(uuid "069cf7d9-fc1e-4b5e-9eba-b811649cf3a1")
 		)
 		(pad "35" smd rect
@@ -2488,6 +2699,8 @@
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "X1")
+			(pinfunction "(A8)PC0_35")
+			(pintype "bidirectional")
 			(uuid "3434f1d2-9795-4221-b0bf-8c817940550d")
 		)
 		(pad "36" smd rect
@@ -2495,6 +2708,8 @@
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "Y1")
+			(pinfunction "(A9)PC1_36")
+			(pintype "bidirectional")
 			(uuid "5d0a5ea7-abc5-4203-8471-be9b9e08ae2c")
 		)
 		(pad "37" smd rect
@@ -2502,6 +2717,8 @@
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "X2")
+			(pinfunction "(A10)PC2_37")
+			(pintype "bidirectional")
 			(uuid "0c6b6070-f401-40be-a47e-cd19666bb5f7")
 		)
 		(pad "38" smd rect
@@ -2509,6 +2726,8 @@
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "Y2")
+			(pinfunction "(A11/T.3)PC3_38")
+			(pintype "bidirectional")
 			(uuid "1b5ca732-db4c-44c8-a932-a312bb02235a")
 		)
 		(pad "39" smd rect
@@ -2516,6 +2735,8 @@
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "L_Button")
+			(pinfunction "(A12/OC.3C)PC4_39")
+			(pintype "bidirectional")
 			(uuid "7f5264e9-72cd-4fc7-85b8-d80a6c99f3cb")
 		)
 		(pad "40" smd rect
@@ -2523,6 +2744,8 @@
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "M_Button")
+			(pinfunction "(A13/OC.3B)PC5_40")
+			(pintype "bidirectional")
 			(uuid "669f8e24-525c-4872-a4a0-d6755a6f5fc2")
 		)
 		(pad "41" smd rect
@@ -2530,76 +2753,98 @@
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "R_Button")
+			(pinfunction "(A14/OC.3A)PC6_41")
+			(pintype "bidirectional")
 			(uuid "abac51b0-fb7b-48ec-a53c-3c3562d703fe")
 		)
 		(pad "42" smd rect
 			(at 7.7 -1.2)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad42)")
+			(net "unconnected-(IC1-(A15{slash}IC.3{slash}CLKO)PC7-Pad42)")
+			(pinfunction "(A15/IC.3/CLKO)PC7_42")
+			(pintype "bidirectional+no_connect")
 			(uuid "769a7cbd-f0ee-4fb7-affa-8b3b98a553ba")
 		)
 		(pad "43" smd rect
 			(at 7.7 -2)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad43)")
+			(net "Net-(IC1-(ALE{slash}~{HWB})PE2)")
+			(pinfunction "(ALE/~{HWB})PE2_43")
+			(pintype "bidirectional")
 			(uuid "df4a0be3-7064-44db-8088-3b8a95feba14")
 		)
 		(pad "44" smd rect
 			(at 7.7 -2.8)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad44)")
+			(net "unconnected-(IC1-(AD7)PA7-Pad44)")
+			(pinfunction "(AD7)PA7_44")
+			(pintype "bidirectional+no_connect")
 			(uuid "d8943677-317b-4dd3-a242-a0b32d91cd2a")
 		)
 		(pad "45" smd rect
 			(at 7.7 -3.6)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad45)")
+			(net "unconnected-(IC1-(AD6)PA6-Pad45)")
+			(pinfunction "(AD6)PA6_45")
+			(pintype "bidirectional+no_connect")
 			(uuid "ef415875-c7c7-4c3a-b4d7-0889475fe827")
 		)
 		(pad "46" smd rect
 			(at 7.7 -4.4)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad46)")
+			(net "unconnected-(IC1-(AD5)PA5-Pad46)")
+			(pinfunction "(AD5)PA5_46")
+			(pintype "bidirectional+no_connect")
 			(uuid "23045b47-c280-4f12-926c-8770fa427c84")
 		)
 		(pad "47" smd rect
 			(at 7.7 -5.2)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad47)")
+			(net "Net-(IC1-(AD4)PA4)")
+			(pinfunction "(AD4)PA4_47")
+			(pintype "bidirectional")
 			(uuid "996d6190-32f6-45e5-a6af-b1db92e0d450")
 		)
 		(pad "48" smd rect
 			(at 7.7 -6)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad48)")
+			(net "unconnected-(IC1-(AD3)PA3-Pad48)")
+			(pinfunction "(AD3)PA3_48")
+			(pintype "bidirectional+no_connect")
 			(uuid "5e0e161b-fbe0-4593-abf4-f452cfa011a5")
 		)
 		(pad "49" smd rect
 			(at 6 -7.7 90)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad49)")
+			(net "unconnected-(IC1-(AD2)PA2-Pad49)")
+			(pinfunction "(AD2)PA2_49")
+			(pintype "bidirectional+no_connect")
 			(uuid "f0d9bc0a-498a-4508-a7f9-8dc8c2827a83")
 		)
 		(pad "50" smd rect
 			(at 5.2 -7.7 90)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad50)")
+			(net "unconnected-(IC1-(AD1)PA1-Pad50)")
+			(pinfunction "(AD1)PA1_50")
+			(pintype "bidirectional+no_connect")
 			(uuid "d6596ba1-4891-4d45-8258-00244121dccc")
 		)
 		(pad "51" smd rect
 			(at 4.4 -7.7 90)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad51)")
+			(net "unconnected-(IC1-(AD0)PA0-Pad51)")
+			(pinfunction "(AD0)PA0_51")
+			(pintype "bidirectional+no_connect")
 			(uuid "ae49dfd4-803c-4ce4-a29a-7dc1e7abe41a")
 		)
 		(pad "52" smd rect
@@ -2607,6 +2852,8 @@
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "+5V")
+			(pinfunction "Vcc_52")
+			(pintype "power_in")
 			(uuid "759e0271-bca2-4da5-b071-9d54e699dc92")
 		)
 		(pad "53" smd rect
@@ -2614,69 +2861,89 @@
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
+			(pinfunction "Gnd_53")
+			(pintype "power_in")
 			(uuid "b918403d-d0db-4197-a57f-8df3dc9e5897")
 		)
 		(pad "54" smd rect
 			(at 2 -7.7 90)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad54)")
+			(net "Net-(IC1-(ADC7{slash}TDI)PF7)")
+			(pinfunction "(ADC7/TDI)PF7_54")
+			(pintype "bidirectional")
 			(uuid "3cd86b00-538b-4f0c-9a20-2d3742a6d548")
 		)
 		(pad "55" smd rect
 			(at 1.2 -7.7 90)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad55)")
+			(net "Net-(IC1-(ADC6{slash}TDO)PF6)")
+			(pinfunction "(ADC6/TDO)PF6_55")
+			(pintype "bidirectional")
 			(uuid "1c73209f-4144-452b-839c-9c9efc012cdb")
 		)
 		(pad "56" smd rect
 			(at 0.4 -7.7 90)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad56)")
+			(net "Net-(IC1-(ADC5{slash}TMS)PF5)")
+			(pinfunction "(ADC5/TMS)PF5_56")
+			(pintype "bidirectional")
 			(uuid "189d2178-88b4-434d-83d7-cf7f3f4777d3")
 		)
 		(pad "57" smd rect
 			(at -0.4 -7.7 90)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad57)")
+			(net "Net-(IC1-(ADC4{slash}TCK)PF4)")
+			(pinfunction "(ADC4/TCK)PF4_57")
+			(pintype "bidirectional")
 			(uuid "4d3df713-f218-4135-9c8b-4f80a92e4364")
 		)
 		(pad "58" smd rect
 			(at -1.2 -7.7 90)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad58)")
+			(net "unconnected-(IC1-(ADC3)PF3-Pad58)")
+			(pinfunction "(ADC3)PF3_58")
+			(pintype "bidirectional+no_connect")
 			(uuid "adb74a0d-8735-4273-8f63-93c2967fd791")
 		)
 		(pad "59" smd rect
 			(at -2 -7.7 90)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad59)")
+			(net "unconnected-(IC1-(ADC2)PF2-Pad59)")
+			(pinfunction "(ADC2)PF2_59")
+			(pintype "bidirectional+no_connect")
 			(uuid "3d3eef8a-fb6b-46d9-93e4-01d5f5c9cc18")
 		)
 		(pad "60" smd rect
 			(at -2.8 -7.7 90)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad60)")
+			(net "unconnected-(IC1-(ADC1)PF1-Pad60)")
+			(pinfunction "(ADC1)PF1_60")
+			(pintype "bidirectional+no_connect")
 			(uuid "4b1a2c9f-76da-4566-9a79-3ac43172e4ed")
 		)
 		(pad "61" smd rect
 			(at -3.6 -7.7 90)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad61)")
+			(net "unconnected-(IC1-(ADC0)PF0-Pad61)")
+			(pinfunction "(ADC0)PF0_61")
+			(pintype "bidirectional+no_connect")
 			(uuid "144bac4b-f330-476c-98bb-e0f28165ebb2")
 		)
 		(pad "62" smd rect
 			(at -4.4 -7.7 90)
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(C3-Pad1)")
+			(net "Net-(IC1-ARef)")
+			(pinfunction "ARef_62")
+			(pintype "input")
 			(uuid "f8f50f40-dd4d-4d32-876b-20e2625cf7cf")
 		)
 		(pad "63" smd rect
@@ -2684,6 +2951,8 @@
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
+			(pinfunction "Gnd_63")
+			(pintype "power_in")
 			(uuid "95b67abd-5b4a-45c4-8a18-52be3359e662")
 		)
 		(pad "64" smd rect
@@ -2691,6 +2960,8 @@
 			(size 1.5 0.55)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "+5V")
+			(pinfunction "AVcc_64")
+			(pintype "power_in")
 			(uuid "4d1bf98a-f755-4d5f-a4c4-acecf5a408fb")
 		)
 		(embedded_fonts no)
@@ -2756,7 +3027,16 @@
 				)
 			)
 		)
+		(property ki_fp_filters "Pin_Header_Straight_1X* Pin_Header_Angled_1X* Socket_Strip_Straight_1X* Socket_Strip_Angled_1X*")
 		(path "/00000000-0000-0000-0000-0000590f0d71")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2" "3" "4" "5" "6" "7" "8" "9" "10")
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -2916,7 +3196,9 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net "Net-(IC1-Pad25)")
+			(net "Net-(IC1-(OC0B{slash}SCL{slash}INT0)PD0)")
+			(pinfunction "P1_1")
+			(pintype "passive")
 			(uuid "19dcf0ac-6e97-4c88-ac5e-e48c5f4cbd53")
 		)
 		(pad "2" thru_hole oval
@@ -2925,7 +3207,9 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net "Net-(IC1-Pad26)")
+			(net "Net-(IC1-(OC2B{slash}SDA{slash}INT1)PD1)")
+			(pinfunction "P2_2")
+			(pintype "passive")
 			(uuid "e73ea650-b746-494f-bc6a-aa98ba6cdf41")
 		)
 		(pad "3" thru_hole oval
@@ -2934,7 +3218,9 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net "Net-(IC1-Pad27)")
+			(net "Net-(IC1-(RXD1{slash}INT2)PD2)")
+			(pinfunction "P3_3")
+			(pintype "passive")
 			(uuid "ec1083c4-39c5-4003-8a45-242087db21ca")
 		)
 		(pad "4" thru_hole oval
@@ -2943,7 +3229,9 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net "Net-(IC1-Pad28)")
+			(net "Net-(IC1-(TXD1{slash}INT3)PD3)")
+			(pinfunction "P4_4")
+			(pintype "passive")
 			(uuid "234bc3be-498a-4aa9-9ec4-021493959661")
 		)
 		(pad "5" thru_hole oval
@@ -2952,7 +3240,9 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net "Net-(IC1-Pad29)")
+			(net "Net-(IC1-(ICP1)PD4)")
+			(pinfunction "P5_5")
+			(pintype "passive")
 			(uuid "b9d203f0-1b24-459f-a113-addbcd8e742c")
 		)
 		(pad "6" thru_hole oval
@@ -2961,7 +3251,9 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net "Net-(IC1-Pad30)")
+			(net "Net-(IC1-(XCK1)PD5)")
+			(pinfunction "P6_6")
+			(pintype "passive")
 			(uuid "bf4583cb-000d-48d4-a5a6-959c9c279ef3")
 		)
 		(pad "7" thru_hole oval
@@ -2970,7 +3262,9 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net "Net-(IC1-Pad31)")
+			(net "Net-(IC1-(T1)PD6)")
+			(pinfunction "P7_7")
+			(pintype "passive")
 			(uuid "d5b9fac7-bd94-4019-b922-110f0e10029e")
 		)
 		(pad "8" thru_hole oval
@@ -2979,7 +3273,9 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net "Net-(IC1-Pad32)")
+			(net "Net-(IC1-(T0)PD7)")
+			(pinfunction "P8_8")
+			(pintype "passive")
 			(uuid "c085f725-90c1-48b0-a102-6bb1e74fc5cb")
 		)
 		(pad "9" thru_hole oval
@@ -2989,6 +3285,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
+			(pinfunction "P9_9")
+			(pintype "passive")
 			(uuid "19c16723-dc12-48b2-9ab0-44a1841ce639")
 		)
 		(pad "10" thru_hole oval
@@ -2998,6 +3296,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "+5V")
+			(pinfunction "P10_10")
+			(pintype "passive")
 			(uuid "905c50f3-f0a5-40cd-a86c-8ad721876f28")
 		)
 		(embedded_fonts no)
@@ -3076,7 +3376,16 @@
 				)
 			)
 		)
+		(property ki_fp_filters "Pin_Header_Straight_1X* Pin_Header_Angled_1X* Socket_Strip_Straight_1X* Socket_Strip_Angled_1X*")
 		(path "/00000000-0000-0000-0000-0000590edb7e")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -3225,7 +3534,9 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net "Net-(IC1-Pad47)")
+			(net "Net-(IC1-(AD4)PA4)")
+			(pinfunction "P1_1")
+			(pintype "passive")
 			(uuid "8672b413-7b10-40c1-85ba-8b1421803769")
 		)
 		(pad "2" thru_hole oval
@@ -3235,6 +3546,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
+			(pinfunction "P2_2")
+			(pintype "passive")
 			(uuid "bf307c4f-645c-4bca-8cac-100aee4dc8da")
 		)
 		(embedded_fonts no)
@@ -3300,7 +3613,18 @@
 				)
 			)
 		)
+		(property ki_fp_filters "Pin_Header_Straight_2X* Pin_Header_Angled_2X* Socket_Strip_Straight_2X* Socket_Strip_Angled_2X* IDC_Header_Straight_*")
 		(path "/00000000-0000-0000-0000-0000590ebea9")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "3" "5" "7" "9" "11" "13" "15" "17" "19" "2" "4" "6" "8" "10"
+					"12" "14" "16" "18" "20"
+				)
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -3551,6 +3875,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "+5V")
+			(pinfunction "P1_1")
+			(pintype "passive")
 			(uuid "fa87e327-aa4e-4fe0-afeb-9d5f7b3318be")
 		)
 		(pad "2" thru_hole oval
@@ -3560,6 +3886,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "X1")
+			(pinfunction "P2_2")
+			(pintype "passive")
 			(uuid "4fcb7845-d4cd-462a-b7e1-6eb4d77e3183")
 		)
 		(pad "3" thru_hole oval
@@ -3569,6 +3897,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "+5V")
+			(pinfunction "P3_3")
+			(pintype "passive")
 			(uuid "6e8f3d24-f8ab-4a1d-8e68-0c7f34c0341b")
 		)
 		(pad "4" thru_hole oval
@@ -3578,6 +3908,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "Y1")
+			(pinfunction "P4_4")
+			(pintype "passive")
 			(uuid "def8f61b-cc02-44bd-b1c2-8ed6a1b725f4")
 		)
 		(pad "5" thru_hole oval
@@ -3587,6 +3919,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
+			(pinfunction "P5_5")
+			(pintype "passive")
 			(uuid "ae6be254-ba99-4050-ac0f-ae2c08cd74ae")
 		)
 		(pad "6" thru_hole oval
@@ -3596,6 +3930,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "X2")
+			(pinfunction "P6_6")
+			(pintype "passive")
 			(uuid "173f66cf-ef84-4e53-9c32-d9b0d408715a")
 		)
 		(pad "7" thru_hole oval
@@ -3605,6 +3941,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
+			(pinfunction "P7_7")
+			(pintype "passive")
 			(uuid "8f312453-09cf-476c-821d-cfb26c7de8ed")
 		)
 		(pad "8" thru_hole oval
@@ -3613,7 +3951,9 @@
 			(drill 1.016)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net "Net-(J3-Pad8)")
+			(net "unconnected-(J3-P8-Pad8)")
+			(pinfunction "P8_8")
+			(pintype "passive+no_connect")
 			(uuid "5fd1de04-b12b-4655-8f88-8b29c3784db3")
 		)
 		(pad "9" thru_hole oval
@@ -3623,6 +3963,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
+			(pinfunction "P9_9")
+			(pintype "passive")
 			(uuid "27c973b7-c871-47eb-9ad8-b5f06da0bb54")
 		)
 		(pad "10" thru_hole oval
@@ -3632,6 +3974,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "Y2")
+			(pinfunction "P10_10")
+			(pintype "passive")
 			(uuid "71b0f17a-5889-4f70-bb3d-17ffe4bbc2f8")
 		)
 		(pad "11" thru_hole oval
@@ -3641,6 +3985,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
+			(pinfunction "P11_11")
+			(pintype "passive")
 			(uuid "d2d545ed-d2a1-483a-997c-73c9bf5bb999")
 		)
 		(pad "12" thru_hole oval
@@ -3649,7 +3995,9 @@
 			(drill 1.016)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net "Net-(J3-Pad12)")
+			(net "unconnected-(J3-P12-Pad12)")
+			(pinfunction "P12_12")
+			(pintype "passive+no_connect")
 			(uuid "7de79861-4ba3-4ecd-8a74-bbf088fc8c8b")
 		)
 		(pad "13" thru_hole oval
@@ -3659,6 +4007,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
+			(pinfunction "P13_13")
+			(pintype "passive")
 			(uuid "23e3adc0-778c-44ad-b887-0a21ab26c1a4")
 		)
 		(pad "14" thru_hole oval
@@ -3667,7 +4017,9 @@
 			(drill 1.016)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net "Net-(J3-Pad14)")
+			(net "unconnected-(J3-P14-Pad14)")
+			(pinfunction "P14_14")
+			(pintype "passive+no_connect")
 			(uuid "59114253-3cb9-4e20-b8cf-4de08560ffe5")
 		)
 		(pad "15" thru_hole oval
@@ -3677,6 +4029,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
+			(pinfunction "P15_15")
+			(pintype "passive")
 			(uuid "703ff4d6-91a6-4115-ac52-6c732ff00843")
 		)
 		(pad "16" thru_hole oval
@@ -3686,6 +4040,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "L_Button")
+			(pinfunction "P16_16")
+			(pintype "passive")
 			(uuid "5e302297-9c16-457b-aa44-52518f851a82")
 		)
 		(pad "17" thru_hole oval
@@ -3695,6 +4051,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
+			(pinfunction "P17_17")
+			(pintype "passive")
 			(uuid "6957aba1-d7f4-485f-b09f-670cd246be26")
 		)
 		(pad "18" thru_hole oval
@@ -3704,6 +4062,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "M_Button")
+			(pinfunction "P18_18")
+			(pintype "passive")
 			(uuid "a96edd30-c3ac-467e-81d0-3921dc4d5a72")
 		)
 		(pad "19" thru_hole oval
@@ -3713,6 +4073,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
+			(pinfunction "P19_19")
+			(pintype "passive")
 			(uuid "319aec1a-2b53-4bc0-a8ca-cff1c0e6d30d")
 		)
 		(pad "20" thru_hole oval
@@ -3722,6 +4084,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "R_Button")
+			(pinfunction "P20_20")
+			(pintype "passive")
 			(uuid "90d6df55-92ac-4674-9a25-954e978b8afe")
 		)
 		(embedded_fonts no)
@@ -3776,7 +4140,16 @@
 				)
 			)
 		)
+		(property ki_fp_filters "Pin_Header_Straight_1X* Pin_Header_Angled_1X* Socket_Strip_Straight_1X* Socket_Strip_Angled_1X*")
 		(path "/00000000-0000-0000-0000-0000590ee3a1")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2" "3" "4" "5" "6" "7" "8" "9" "10")
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -3937,6 +4310,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "X1")
+			(pinfunction "P1_1")
+			(pintype "passive")
 			(uuid "96b724e8-0d17-4c26-aeae-7da47d01f1b8")
 		)
 		(pad "2" thru_hole oval
@@ -3946,6 +4321,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "Y1")
+			(pinfunction "P2_2")
+			(pintype "passive")
 			(uuid "b16de619-1651-4ce1-946a-eb7d2583d51c")
 		)
 		(pad "3" thru_hole oval
@@ -3955,6 +4332,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "X2")
+			(pinfunction "P3_3")
+			(pintype "passive")
 			(uuid "6052bb54-3d36-43b6-b454-7c076e506238")
 		)
 		(pad "4" thru_hole oval
@@ -3964,6 +4343,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "Y2")
+			(pinfunction "P4_4")
+			(pintype "passive")
 			(uuid "da3bd66f-933b-43b6-bdbf-2dad19c145bd")
 		)
 		(pad "5" thru_hole oval
@@ -3973,6 +4354,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "L_Button")
+			(pinfunction "P5_5")
+			(pintype "passive")
 			(uuid "e785366a-b942-4253-84ee-08ef66c6868a")
 		)
 		(pad "6" thru_hole oval
@@ -3982,6 +4365,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "M_Button")
+			(pinfunction "P6_6")
+			(pintype "passive")
 			(uuid "e84cfba9-3828-47e5-a7ad-36ea9b4d49e3")
 		)
 		(pad "7" thru_hole oval
@@ -3991,6 +4376,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "R_Button")
+			(pinfunction "P7_7")
+			(pintype "passive")
 			(uuid "f5730ee0-584f-470b-abdd-d027510ccee9")
 		)
 		(pad "8" thru_hole oval
@@ -4000,6 +4387,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
+			(pinfunction "P8_8")
+			(pintype "passive")
 			(uuid "c153c956-c5b6-4318-9959-4c745c817b17")
 		)
 		(pad "9" thru_hole oval
@@ -4009,6 +4398,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
+			(pinfunction "P9_9")
+			(pintype "passive")
 			(uuid "9e31ae26-6d44-4d7a-8219-b9574adec060")
 		)
 		(pad "10" thru_hole oval
@@ -4018,6 +4409,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "+5V")
+			(pinfunction "P10_10")
+			(pintype "passive")
 			(uuid "7b551ff5-d451-4fae-8bb3-a1caf982d570")
 		)
 		(embedded_fonts no)
@@ -4095,7 +4488,16 @@
 				)
 			)
 		)
+		(property ki_fp_filters "USB*")
 		(path "/00000000-0000-0000-0000-000058a4e3c4")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2" "3" "4" "5")
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -4223,20 +4625,26 @@
 			(size 1.12 2.88)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "+5V")
+			(pinfunction "VBUS_1")
+			(pintype "power_in")
 			(uuid "fbf621d3-012b-45db-b1bb-963f9207ef2a")
 		)
 		(pad "2" smd rect
 			(at -1 -1.5 270)
 			(size 1.12 2.88)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(P1-Pad2)")
+			(net "Net-(P1-D-)")
+			(pinfunction "D-_2")
+			(pintype "passive")
 			(uuid "5ce2cab1-b467-44ca-8900-b8ba580412f6")
 		)
 		(pad "3" smd rect
 			(at 1 -1.5 270)
 			(size 1.12 2.88)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(P1-Pad3)")
+			(net "Net-(P1-D+)")
+			(pinfunction "D+_3")
+			(pintype "passive")
 			(uuid "fe1cc494-656a-4def-acc1-4c0ed9f870e7")
 		)
 		(pad "4" smd rect
@@ -4244,6 +4652,8 @@
 			(size 1.12 2.88)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "GND")
+			(pinfunction "GND_4")
+			(pintype "power_in")
 			(uuid "2fc24c29-91c6-4838-b721-e5eb6153ca2c")
 		)
 		(pad "5" thru_hole circle
@@ -4253,6 +4663,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
+			(pinfunction "shield_5")
+			(pintype "passive")
 			(uuid "83e4e5ec-4563-4a11-ac2a-470700df0eec")
 		)
 		(pad "5" thru_hole circle
@@ -4262,6 +4674,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
+			(pinfunction "shield_5")
+			(pintype "passive")
 			(uuid "8126b5ce-8563-4098-8728-889555327043")
 		)
 		(embedded_fonts no)
@@ -4316,7 +4730,16 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_* R_*")
 		(path "/00000000-0000-0000-0000-000058a4e546")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -4434,14 +4857,18 @@
 			(at -1.35 0 180)
 			(size 1.5 1.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad5)")
+			(net "Net-(IC1-D+)")
+			(pinfunction "~_1")
+			(pintype "passive")
 			(uuid "82e2bf83-0a40-4343-a566-49bf19443e25")
 		)
 		(pad "2" smd rect
 			(at 1.35 0 180)
 			(size 1.5 1.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(P1-Pad3)")
+			(net "Net-(P1-D+)")
+			(pinfunction "~_2")
+			(pintype "passive")
 			(uuid "e553e07a-13b7-4f01-a258-c7c979b42bd7")
 		)
 		(embedded_fonts no)
@@ -4507,7 +4934,16 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_* R_*")
 		(path "/00000000-0000-0000-0000-000058a4e483")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -4625,14 +5061,18 @@
 			(at -1.35 0 180)
 			(size 1.5 1.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad4)")
+			(net "Net-(IC1-D-)")
+			(pinfunction "~_1")
+			(pintype "passive")
 			(uuid "b86bf081-f970-49f1-8f30-e32ab53f6859")
 		)
 		(pad "2" smd rect
 			(at 1.35 0 180)
 			(size 1.5 1.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(P1-Pad2)")
+			(net "Net-(P1-D-)")
+			(pinfunction "~_2")
+			(pintype "passive")
 			(uuid "351b93c7-cc30-4663-9e06-c2b4eb9ae044")
 		)
 		(embedded_fonts no)
@@ -4654,9 +5094,10 @@
 		(at 132.08 83.82)
 		(descr "Mesurement Point, Square, SMD Pad,  1.5mm x 1.5mm,")
 		(tags "Mesurement Point Square SMD Pad 1.5x1.5mm")
-		(property "Reference" "RST"
+		(property "Reference" "TP1"
 			(at 0 -2 0)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "2dae1459-367f-4a06-b860-2d26c5d2f4a7")
 			(effects
 				(font
@@ -4665,9 +5106,9 @@
 				)
 			)
 		)
-		(property "Value" "~{RESET}"
-			(at 0 2 0)
-			(layer "F.Fab")
+		(property "Value" "RST"
+			(at 0 -2 0)
+			(layer "F.SilkS")
 			(uuid "35100d99-be43-424e-bf7a-aba8b4865aaf")
 			(effects
 				(font
@@ -4699,6 +5140,14 @@
 			)
 		)
 		(path "/00000000-0000-0000-0000-000058b5ee0b")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1")
+			)
+		)
 		(attr exclude_from_pos_files exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -4745,7 +5194,9 @@
 			(at 0 0)
 			(size 1.5 1.5)
 			(layers "F.Cu" "F.Mask")
-			(net "Net-(IC1-Pad20)")
+			(net "Net-(IC1-~{RESET})")
+			(pinfunction "~_1")
+			(pintype "passive")
 			(uuid "5ea88f1b-77a2-4341-a593-15ef46ff05d5")
 		)
 		(embedded_fonts no)
@@ -4756,9 +5207,10 @@
 		(at 137.668 83.82)
 		(descr "Mesurement Point, Square, SMD Pad,  1.5mm x 1.5mm,")
 		(tags "Mesurement Point Square SMD Pad 1.5x1.5mm")
-		(property "Reference" "TMS"
+		(property "Reference" "TP2"
 			(at 0 -2 0)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "d5c61480-1522-46a2-af01-6b11a300ce11")
 			(effects
 				(font
@@ -4768,8 +5220,8 @@
 			)
 		)
 		(property "Value" "TMS"
-			(at 0 2 0)
-			(layer "F.Fab")
+			(at 0 -2 0)
+			(layer "F.SilkS")
 			(uuid "72d4d9b3-ea65-41a3-87a0-b5dd0d1f63d0")
 			(effects
 				(font
@@ -4801,6 +5253,14 @@
 			)
 		)
 		(path "/00000000-0000-0000-0000-000058b5e42f")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1")
+			)
+		)
 		(attr exclude_from_pos_files exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -4847,7 +5307,9 @@
 			(at 0 0)
 			(size 1.5 1.5)
 			(layers "F.Cu" "F.Mask")
-			(net "Net-(IC1-Pad56)")
+			(net "Net-(IC1-(ADC5{slash}TMS)PF5)")
+			(pinfunction "~_1")
+			(pintype "passive")
 			(uuid "bcac1180-07c5-4444-97bb-a12b6914b593")
 		)
 		(embedded_fonts no)
@@ -4858,9 +5320,10 @@
 		(at 143.256 83.82)
 		(descr "Mesurement Point, Square, SMD Pad,  1.5mm x 1.5mm,")
 		(tags "Mesurement Point Square SMD Pad 1.5x1.5mm")
-		(property "Reference" "TDI"
+		(property "Reference" "TP3"
 			(at 0 -2 0)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "6b20e09a-075d-4473-8787-8f7e8f4855f5")
 			(effects
 				(font
@@ -4870,8 +5333,8 @@
 			)
 		)
 		(property "Value" "TDI"
-			(at 0 2 0)
-			(layer "F.Fab")
+			(at 0 -2 0)
+			(layer "F.SilkS")
 			(uuid "dc13f916-707b-4487-9ce2-3d0d5d73a423")
 			(effects
 				(font
@@ -4903,6 +5366,14 @@
 			)
 		)
 		(path "/00000000-0000-0000-0000-000058b5e4f3")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1")
+			)
+		)
 		(attr exclude_from_pos_files exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -4949,7 +5420,9 @@
 			(at 0 0)
 			(size 1.5 1.5)
 			(layers "F.Cu" "F.Mask")
-			(net "Net-(IC1-Pad54)")
+			(net "Net-(IC1-(ADC7{slash}TDI)PF7)")
+			(pinfunction "~_1")
+			(pintype "passive")
 			(uuid "10655e2d-d9fe-4c31-a566-97d0d331ad90")
 		)
 		(embedded_fonts no)
@@ -4960,9 +5433,10 @@
 		(at 146.05 83.82 180)
 		(descr "Mesurement Point, Square, SMD Pad,  1.5mm x 1.5mm,")
 		(tags "Mesurement Point Square SMD Pad 1.5x1.5mm")
-		(property "Reference" "GND"
+		(property "Reference" "TP4"
 			(at 0 -2 180)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "dd52b3cc-72fc-4351-a891-7a72a5fe1c2d")
 			(effects
 				(font
@@ -4972,8 +5446,8 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 0 2 180)
-			(layer "F.Fab")
+			(at 0 -2 180)
+			(layer "F.SilkS")
 			(uuid "60a16fbd-75d0-4334-b399-51a76d40fc31")
 			(effects
 				(font
@@ -5005,6 +5479,14 @@
 			)
 		)
 		(path "/00000000-0000-0000-0000-000058b5f32a")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1")
+			)
+		)
 		(attr exclude_from_pos_files exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -5052,6 +5534,8 @@
 			(size 1.5 1.5)
 			(layers "F.Cu" "F.Mask")
 			(net "GND")
+			(pinfunction "~_1")
+			(pintype "passive")
 			(uuid "c1f1e74b-9e49-45bc-afe8-f4d6df8354b3")
 		)
 		(embedded_fonts no)
@@ -5062,9 +5546,10 @@
 		(at 134.874 83.82 180)
 		(descr "Mesurement Point, Square, SMD Pad,  1.5mm x 1.5mm,")
 		(tags "Mesurement Point Square SMD Pad 1.5x1.5mm")
-		(property "Reference" "TCK"
+		(property "Reference" "TP5"
 			(at 0 -2 180)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "4ecee077-728e-4ec7-9fc5-1d040068bbc6")
 			(effects
 				(font
@@ -5074,8 +5559,8 @@
 			)
 		)
 		(property "Value" "TCK"
-			(at 0 2 180)
-			(layer "F.Fab")
+			(at 0 -2 180)
+			(layer "F.SilkS")
 			(uuid "20387eaa-7763-4dab-957c-e34b270aca05")
 			(effects
 				(font
@@ -5107,6 +5592,14 @@
 			)
 		)
 		(path "/00000000-0000-0000-0000-000058b5e194")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1")
+			)
+		)
 		(attr exclude_from_pos_files exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -5153,7 +5646,9 @@
 			(at 0 0 180)
 			(size 1.5 1.5)
 			(layers "F.Cu" "F.Mask")
-			(net "Net-(IC1-Pad57)")
+			(net "Net-(IC1-(ADC4{slash}TCK)PF4)")
+			(pinfunction "~_1")
+			(pintype "passive")
 			(uuid "098c21af-6c60-4e72-bbe7-3c0d24d83866")
 		)
 		(embedded_fonts no)
@@ -5164,9 +5659,10 @@
 		(at 140.462 83.82 180)
 		(descr "Mesurement Point, Square, SMD Pad,  1.5mm x 1.5mm,")
 		(tags "Mesurement Point Square SMD Pad 1.5x1.5mm")
-		(property "Reference" "TDO"
+		(property "Reference" "TP6"
 			(at 0 -2 180)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "6cba4d66-b495-489e-bd56-5ff2d9ca9a10")
 			(effects
 				(font
@@ -5176,8 +5672,8 @@
 			)
 		)
 		(property "Value" "TDO"
-			(at 0 2 180)
-			(layer "F.Fab")
+			(at 0 -2 180)
+			(layer "F.SilkS")
 			(uuid "1be84bb5-cc2e-4286-9d9e-9982fcd12891")
 			(effects
 				(font
@@ -5209,6 +5705,14 @@
 			)
 		)
 		(path "/00000000-0000-0000-0000-000058b5e49a")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1")
+			)
+		)
 		(attr exclude_from_pos_files exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -5255,7 +5759,9 @@
 			(at 0 0 180)
 			(size 1.5 1.5)
 			(layers "F.Cu" "F.Mask")
-			(net "Net-(IC1-Pad55)")
+			(net "Net-(IC1-(ADC6{slash}TDO)PF6)")
+			(pinfunction "~_1")
+			(pintype "passive")
 			(uuid "8a141911-e0de-4ecd-a7d8-55aa35a18fd7")
 		)
 		(embedded_fonts no)
@@ -5266,9 +5772,10 @@
 		(at 148.844 83.82)
 		(descr "Mesurement Point, Square, SMD Pad,  1.5mm x 1.5mm,")
 		(tags "Mesurement Point Square SMD Pad 1.5x1.5mm")
-		(property "Reference" "5V"
+		(property "Reference" "TP7"
 			(at 0 -2 0)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "d6685767-d533-4426-a93e-03fd2d3e99b1")
 			(effects
 				(font
@@ -5277,9 +5784,9 @@
 				)
 			)
 		)
-		(property "Value" "+5V"
-			(at 0 2 0)
-			(layer "F.Fab")
+		(property "Value" "5V"
+			(at 0 -2 0)
+			(layer "F.SilkS")
 			(uuid "86414ad6-cf59-4c75-8348-66597f25d652")
 			(effects
 				(font
@@ -5311,6 +5818,14 @@
 			)
 		)
 		(path "/00000000-0000-0000-0000-000058b5f2b1")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1")
+			)
+		)
 		(attr exclude_from_pos_files exclude_from_bom)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -5358,6 +5873,8 @@
 			(size 1.5 1.5)
 			(layers "F.Cu" "F.Mask")
 			(net "+5V")
+			(pinfunction "~_1")
+			(pintype "passive")
 			(uuid "111fc091-fd7a-4aa3-b514-5eb8c0149eb8")
 		)
 		(embedded_fonts no)
@@ -5412,7 +5929,16 @@
 				)
 			)
 		)
+		(property ki_fp_filters "Crystal*")
 		(path "/00000000-0000-0000-0000-000058a4f945")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -5634,14 +6160,18 @@
 			(at -2.6 0 180)
 			(size 3.5 2.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(C2-Pad1)")
+			(net "Net-(IC1-Xtal2)")
+			(pinfunction "1_1")
+			(pintype "passive")
 			(uuid "bd5a351e-7cd3-4d54-bbf9-d8fd874def47")
 		)
 		(pad "2" smd rect
 			(at 2.6 0 180)
 			(size 3.5 2.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(C1-Pad1)")
+			(net "Net-(IC1-Xtal1)")
+			(pinfunction "2_2")
+			(pintype "passive")
 			(uuid "ba25a031-bf94-4475-a292-35acecad4e20")
 		)
 		(embedded_fonts no)
@@ -5708,7 +6238,16 @@
 				)
 			)
 		)
+		(property ki_fp_filters "Mounting?Hole* Hole*")
 		(path "/00000000-0000-0000-0000-0000590f289a")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins)
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -5793,7 +6332,16 @@
 				)
 			)
 		)
+		(property ki_fp_filters "Mounting?Hole* Hole*")
 		(path "/00000000-0000-0000-0000-0000590f291c")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins)
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -5878,7 +6426,16 @@
 				)
 			)
 		)
+		(property ki_fp_filters "Mounting?Hole* Hole*")
 		(path "/00000000-0000-0000-0000-0000590f298e")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins)
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -5963,7 +6520,16 @@
 				)
 			)
 		)
+		(property ki_fp_filters "Mounting?Hole* Hole*")
 		(path "/00000000-0000-0000-0000-0000590f29fd")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins)
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -6060,7 +6626,16 @@
 				)
 			)
 		)
+		(property ki_fp_filters "Pin_Header_Straight_1X* Pin_Header_Angled_1X* Socket_Strip_Straight_1X* Socket_Strip_Angled_1X*")
 		(path "/00000000-0000-0000-0000-0000590f13c8")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -6210,6 +6785,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
+			(pinfunction "P1_1")
+			(pintype "passive")
 			(uuid "2ff1f822-23b1-44bd-94ec-bd81b3676718")
 		)
 		(pad "2" thru_hole oval
@@ -6218,7 +6795,9 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net "Net-(IC1-Pad43)")
+			(net "Net-(IC1-(ALE{slash}~{HWB})PE2)")
+			(pinfunction "P2_2")
+			(pintype "passive")
 			(uuid "ca95829f-d057-4fe6-8695-08c93bb9d3be")
 		)
 		(embedded_fonts no)
@@ -6297,7 +6876,16 @@
 				)
 			)
 		)
+		(property ki_fp_filters "Pin_Header_Straight_1X* Pin_Header_Angled_1X* Socket_Strip_Straight_1X* Socket_Strip_Angled_1X*")
 		(path "/00000000-0000-0000-0000-0000590f12ed")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -6447,6 +7035,8 @@
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
 			(net "GND")
+			(pinfunction "P1_1")
+			(pintype "passive")
 			(uuid "56bb65c0-9724-4a55-8044-52f7378aabb3")
 		)
 		(pad "2" thru_hole oval
@@ -6455,7 +7045,9 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net "Net-(IC1-Pad20)")
+			(net "Net-(IC1-~{RESET})")
+			(pinfunction "P2_2")
+			(pintype "passive")
 			(uuid "871948bb-8a2b-45f8-88a1-ea5d9d6b07cd")
 		)
 		(embedded_fonts no)
@@ -6521,7 +7113,16 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_* R_*")
 		(path "/00000000-0000-0000-0000-0000590ef999")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -6639,7 +7240,9 @@
 			(at -1.35 0 270)
 			(size 1.5 1.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad43)")
+			(net "Net-(IC1-(ALE{slash}~{HWB})PE2)")
+			(pinfunction "~_1")
+			(pintype "passive")
 			(uuid "2524ff59-95a7-434e-9bb3-197b985e253a")
 		)
 		(pad "2" smd rect
@@ -6647,6 +7250,8 @@
 			(size 1.5 1.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "+5V")
+			(pinfunction "~_2")
+			(pintype "passive")
 			(uuid "c89b08e5-82ed-4a23-a124-51604d55b2b1")
 		)
 		(embedded_fonts no)
@@ -6712,7 +7317,16 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_* R_*")
 		(path "/00000000-0000-0000-0000-0000590eff41")
+		(sheetname "/")
+		(sheetfile "SmallyMouse2.kicad_sch")
+		(units
+			(unit
+				(name "A")
+				(pins "1" "2")
+			)
+		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
@@ -6830,7 +7444,9 @@
 			(at -1.35 0 270)
 			(size 1.5 1.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
-			(net "Net-(IC1-Pad20)")
+			(net "Net-(IC1-~{RESET})")
+			(pinfunction "~_1")
+			(pintype "passive")
 			(uuid "2c013109-801c-4419-9435-0a91e05fa093")
 		)
 		(pad "2" smd rect
@@ -6838,6 +7454,8 @@
 			(size 1.5 1.3)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net "+5V")
+			(pinfunction "~_2")
+			(pintype "passive")
 			(uuid "4c08e09a-af41-41f1-b3ba-615dce4fd03e")
 		)
 		(embedded_fonts no)
@@ -7971,7 +8589,7 @@
 		(end 132.842 115.824)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(C1-Pad1)")
+		(net "Net-(IC1-Xtal1)")
 		(uuid "00000000-0000-0000-0000-0000590ed822")
 	)
 	(segment
@@ -7979,7 +8597,7 @@
 		(end 143.002 115.824)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(C1-Pad1)")
+		(net "Net-(IC1-Xtal1)")
 		(uuid "00000000-0000-0000-0000-0000590ed829")
 	)
 	(segment
@@ -7987,7 +8605,7 @@
 		(end 144.018 115.824)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(C1-Pad1)")
+		(net "Net-(IC1-Xtal1)")
 		(uuid "00000000-0000-0000-0000-0000590ed830")
 	)
 	(segment
@@ -7995,7 +8613,7 @@
 		(end 144.888 114.954)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(C1-Pad1)")
+		(net "Net-(IC1-Xtal1)")
 		(uuid "00000000-0000-0000-0000-0000590ed839")
 	)
 	(segment
@@ -8003,7 +8621,7 @@
 		(end 144.888 107.776)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(C1-Pad1)")
+		(net "Net-(IC1-Xtal1)")
 		(uuid "00000000-0000-0000-0000-0000590ed83b")
 	)
 	(segment
@@ -8011,7 +8629,7 @@
 		(end 132.274 114.046)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(C1-Pad1)")
+		(net "Net-(IC1-Xtal1)")
 		(uuid "00000000-0000-0000-0000-0000590ed845")
 	)
 	(segment
@@ -8019,7 +8637,7 @@
 		(end 132.274 115.256)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(C1-Pad1)")
+		(net "Net-(IC1-Xtal1)")
 		(uuid "abeb1563-312f-4c22-8255-2a9c66e4845f")
 	)
 	(segment
@@ -8027,7 +8645,7 @@
 		(end 132.334 113.986)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(C1-Pad1)")
+		(net "Net-(IC1-Xtal1)")
 		(uuid "de1a6921-f340-44cf-91ae-335aac759cfe")
 	)
 	(segment
@@ -8725,7 +9343,7 @@
 		(end 137.474 114.046)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(C2-Pad1)")
+		(net "Net-(IC1-Xtal2)")
 		(uuid "00000000-0000-0000-0000-0000590ed848")
 	)
 	(segment
@@ -8733,7 +9351,7 @@
 		(end 143.51 115.062)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(C2-Pad1)")
+		(net "Net-(IC1-Xtal2)")
 		(uuid "00000000-0000-0000-0000-0000590ed858")
 	)
 	(segment
@@ -8741,7 +9359,7 @@
 		(end 138.49 115.062)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(C2-Pad1)")
+		(net "Net-(IC1-Xtal2)")
 		(uuid "00000000-0000-0000-0000-0000590ed85a")
 	)
 	(segment
@@ -8749,7 +9367,7 @@
 		(end 137.474 114.046)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(C2-Pad1)")
+		(net "Net-(IC1-Xtal2)")
 		(uuid "00000000-0000-0000-0000-0000590ed862")
 	)
 	(segment
@@ -8757,7 +9375,7 @@
 		(end 135.128 111.7)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(C2-Pad1)")
+		(net "Net-(IC1-Xtal2)")
 		(uuid "67f8e411-78f1-4872-962b-5bb4ae9d4c6a")
 	)
 	(segment
@@ -8765,7 +9383,7 @@
 		(end 144.088 114.484)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(C2-Pad1)")
+		(net "Net-(IC1-Xtal2)")
 		(uuid "791bd3e1-6d26-4dcd-a407-800c104c7768")
 	)
 	(segment
@@ -8773,7 +9391,7 @@
 		(end 142.728 89.662)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(C3-Pad1)")
+		(net "Net-(IC1-ARef)")
 		(uuid "00000000-0000-0000-0000-0000590ed5e8")
 	)
 	(segment
@@ -8781,7 +9399,7 @@
 		(end 140.888 91.502)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(C3-Pad1)")
+		(net "Net-(IC1-ARef)")
 		(uuid "4a8e008c-e646-4b36-9195-55d796d97278")
 	)
 	(segment
@@ -8789,7 +9407,7 @@
 		(end 136.144 99.06)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(C4-Pad1)")
+		(net "Net-(IC1-UCap)")
 		(uuid "00000000-0000-0000-0000-0000590eda5a")
 	)
 	(segment
@@ -8797,7 +9415,7 @@
 		(end 136.144 100.31)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(C4-Pad1)")
+		(net "Net-(IC1-UCap)")
 		(uuid "00000000-0000-0000-0000-0000590eda5b")
 	)
 	(segment
@@ -8805,7 +9423,7 @@
 		(end 135.128 101.326)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(C4-Pad1)")
+		(net "Net-(IC1-UCap)")
 		(uuid "00000000-0000-0000-0000-0000590eda5f")
 	)
 	(segment
@@ -8813,7 +9431,7 @@
 		(end 136.328 98.876)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(C4-Pad1)")
+		(net "Net-(IC1-UCap)")
 		(uuid "068c16e5-6b90-4901-b41e-5055a7c7c9a5")
 	)
 	(segment
@@ -9385,7 +10003,7 @@
 		(end 134.7 94.742)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad4)")
+		(net "Net-(IC1-D-)")
 		(uuid "00000000-0000-0000-0000-0000590eda28")
 	)
 	(segment
@@ -9393,7 +10011,7 @@
 		(end 136.434 96.476)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad4)")
+		(net "Net-(IC1-D-)")
 		(uuid "27989a9c-c225-4826-a8d3-91e27a1a9224")
 	)
 	(segment
@@ -9401,7 +10019,7 @@
 		(end 134.7 96.774)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad5)")
+		(net "Net-(IC1-D+)")
 		(uuid "00000000-0000-0000-0000-0000590eda2d")
 	)
 	(segment
@@ -9409,7 +10027,7 @@
 		(end 135.202 97.276)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad5)")
+		(net "Net-(IC1-D+)")
 		(uuid "a7d31d9f-be50-47af-876a-a04c74d2f13a")
 	)
 	(segment
@@ -9417,7 +10035,7 @@
 		(end 132.08 83.82)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad20)")
+		(net "Net-(IC1-~{RESET})")
 		(uuid "00000000-0000-0000-0000-0000590ed9d2")
 	)
 	(segment
@@ -9425,7 +10043,7 @@
 		(end 131.953 87.249)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad20)")
+		(net "Net-(IC1-~{RESET})")
 		(uuid "00000000-0000-0000-0000-0000590f005d")
 	)
 	(segment
@@ -9433,7 +10051,7 @@
 		(end 129.413 87.63)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad20)")
+		(net "Net-(IC1-~{RESET})")
 		(uuid "00000000-0000-0000-0000-0000590f0060")
 	)
 	(segment
@@ -9441,7 +10059,7 @@
 		(end 131.953 87.122)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad20)")
+		(net "Net-(IC1-~{RESET})")
 		(uuid "00000000-0000-0000-0000-0000590f01be")
 	)
 	(segment
@@ -9449,7 +10067,7 @@
 		(end 131.953 87.249)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad20)")
+		(net "Net-(IC1-~{RESET})")
 		(uuid "00000000-0000-0000-0000-0000590f01c4")
 	)
 	(segment
@@ -9457,7 +10075,7 @@
 		(end 132.08 87.122)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad20)")
+		(net "Net-(IC1-~{RESET})")
 		(uuid "00000000-0000-0000-0000-0000590f01c5")
 	)
 	(segment
@@ -9465,7 +10083,7 @@
 		(end 141.732 101.981)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad20)")
+		(net "Net-(IC1-~{RESET})")
 		(uuid "00000000-0000-0000-0000-0000590f0256")
 	)
 	(segment
@@ -9473,7 +10091,7 @@
 		(end 131.572 87.63)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad20)")
+		(net "Net-(IC1-~{RESET})")
 		(uuid "2bbb00d5-679b-4799-9363-1c5509c633bd")
 	)
 	(segment
@@ -9481,7 +10099,7 @@
 		(end 141.688 102.025)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad20)")
+		(net "Net-(IC1-~{RESET})")
 		(uuid "56e3d749-b061-4a11-a1e0-8b1ea38eae84")
 	)
 	(segment
@@ -9489,7 +10107,7 @@
 		(end 128.985 88.058)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad20)")
+		(net "Net-(IC1-~{RESET})")
 		(uuid "c080c380-f847-47ed-8a82-cfc9989615ac")
 	)
 	(via
@@ -9507,7 +10125,7 @@
 			(back no)
 		)
 		(filling no)
-		(net "Net-(IC1-Pad20)")
+		(net "Net-(IC1-~{RESET})")
 		(uuid "00425c2b-cbf1-4b6d-b518-bd7ec03f7865")
 	)
 	(via
@@ -9525,7 +10143,7 @@
 			(back no)
 		)
 		(filling no)
-		(net "Net-(IC1-Pad20)")
+		(net "Net-(IC1-~{RESET})")
 		(uuid "3c493556-9f10-4536-8ff2-d23d49119488")
 	)
 	(segment
@@ -9533,7 +10151,7 @@
 		(end 140.208 100.457)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad20)")
+		(net "Net-(IC1-~{RESET})")
 		(uuid "00000000-0000-0000-0000-0000590f0261")
 	)
 	(segment
@@ -9541,7 +10159,7 @@
 		(end 139.827 100.457)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad20)")
+		(net "Net-(IC1-~{RESET})")
 		(uuid "00000000-0000-0000-0000-0000590f0262")
 	)
 	(segment
@@ -9549,7 +10167,7 @@
 		(end 132.08 92.71)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad20)")
+		(net "Net-(IC1-~{RESET})")
 		(uuid "00000000-0000-0000-0000-0000590f0263")
 	)
 	(segment
@@ -9557,7 +10175,7 @@
 		(end 132.08 87.122)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad20)")
+		(net "Net-(IC1-~{RESET})")
 		(uuid "00000000-0000-0000-0000-0000590f0269")
 	)
 	(segment
@@ -9565,7 +10183,7 @@
 		(end 145.796 103.632)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad25)")
+		(net "Net-(IC1-(OC0B{slash}SCL{slash}INT0)PD0)")
 		(uuid "00000000-0000-0000-0000-0000590ed96b")
 	)
 	(segment
@@ -9573,7 +10191,7 @@
 		(end 145.688 103.74)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad25)")
+		(net "Net-(IC1-(OC0B{slash}SCL{slash}INT0)PD0)")
 		(uuid "2fe9c751-9933-4ef1-8707-2b7ddbd93c8c")
 	)
 	(via
@@ -9591,7 +10209,7 @@
 			(back no)
 		)
 		(filling no)
-		(net "Net-(IC1-Pad25)")
+		(net "Net-(IC1-(OC0B{slash}SCL{slash}INT0)PD0)")
 		(uuid "4b327320-98fb-4e04-bd54-866f4a79ceaa")
 	)
 	(segment
@@ -9599,7 +10217,7 @@
 		(end 138.049 103.632)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad25)")
+		(net "Net-(IC1-(OC0B{slash}SCL{slash}INT0)PD0)")
 		(uuid "00000000-0000-0000-0000-0000590ed96f")
 	)
 	(segment
@@ -9607,7 +10225,7 @@
 		(end 135.509 115.57)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad25)")
+		(net "Net-(IC1-(OC0B{slash}SCL{slash}INT0)PD0)")
 		(uuid "00000000-0000-0000-0000-0000590ee08a")
 	)
 	(segment
@@ -9615,7 +10233,7 @@
 		(end 136.144 114.935)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad25)")
+		(net "Net-(IC1-(OC0B{slash}SCL{slash}INT0)PD0)")
 		(uuid "00000000-0000-0000-0000-0000590ee08d")
 	)
 	(segment
@@ -9623,7 +10241,7 @@
 		(end 136.144 105.918)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad25)")
+		(net "Net-(IC1-(OC0B{slash}SCL{slash}INT0)PD0)")
 		(uuid "00000000-0000-0000-0000-0000590ee08f")
 	)
 	(segment
@@ -9631,7 +10249,7 @@
 		(end 136.144 105.537)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad25)")
+		(net "Net-(IC1-(OC0B{slash}SCL{slash}INT0)PD0)")
 		(uuid "00000000-0000-0000-0000-0000590ee090")
 	)
 	(segment
@@ -9639,7 +10257,7 @@
 		(end 138.049 103.632)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad25)")
+		(net "Net-(IC1-(OC0B{slash}SCL{slash}INT0)PD0)")
 		(uuid "00000000-0000-0000-0000-0000590ee092")
 	)
 	(segment
@@ -9647,7 +10265,7 @@
 		(end 133.604 115.57)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad25)")
+		(net "Net-(IC1-(OC0B{slash}SCL{slash}INT0)PD0)")
 		(uuid "cdc36287-6b50-47e9-8f9c-e4119f29df6d")
 	)
 	(segment
@@ -9655,7 +10273,7 @@
 		(end 146.558 104.394)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad26)")
+		(net "Net-(IC1-(OC2B{slash}SDA{slash}INT1)PD1)")
 		(uuid "00000000-0000-0000-0000-0000590ed952")
 	)
 	(segment
@@ -9663,7 +10281,7 @@
 		(end 146.488 104.464)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad26)")
+		(net "Net-(IC1-(OC2B{slash}SDA{slash}INT1)PD1)")
 		(uuid "1cb0324b-d5b8-4265-b241-4245bb233a16")
 	)
 	(via
@@ -9681,7 +10299,7 @@
 			(back no)
 		)
 		(filling no)
-		(net "Net-(IC1-Pad26)")
+		(net "Net-(IC1-(OC2B{slash}SDA{slash}INT1)PD1)")
 		(uuid "2af08fb0-fc9e-4e60-b1c7-089c49a3e1d6")
 	)
 	(segment
@@ -9689,7 +10307,7 @@
 		(end 138.43 104.394)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad26)")
+		(net "Net-(IC1-(OC2B{slash}SDA{slash}INT1)PD1)")
 		(uuid "00000000-0000-0000-0000-0000590ed958")
 	)
 	(segment
@@ -9697,7 +10315,7 @@
 		(end 134.366 116.332)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad26)")
+		(net "Net-(IC1-(OC2B{slash}SDA{slash}INT1)PD1)")
 		(uuid "00000000-0000-0000-0000-0000590ee06b")
 	)
 	(segment
@@ -9705,7 +10323,7 @@
 		(end 136.271 116.332)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad26)")
+		(net "Net-(IC1-(OC2B{slash}SDA{slash}INT1)PD1)")
 		(uuid "00000000-0000-0000-0000-0000590ee06e")
 	)
 	(segment
@@ -9713,7 +10331,7 @@
 		(end 136.779 115.824)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad26)")
+		(net "Net-(IC1-(OC2B{slash}SDA{slash}INT1)PD1)")
 		(uuid "00000000-0000-0000-0000-0000590ee073")
 	)
 	(segment
@@ -9721,7 +10339,7 @@
 		(end 136.779 106.045)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad26)")
+		(net "Net-(IC1-(OC2B{slash}SDA{slash}INT1)PD1)")
 		(uuid "00000000-0000-0000-0000-0000590ee075")
 	)
 	(segment
@@ -9729,7 +10347,7 @@
 		(end 138.43 104.394)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad26)")
+		(net "Net-(IC1-(OC2B{slash}SDA{slash}INT1)PD1)")
 		(uuid "00000000-0000-0000-0000-0000590ee07d")
 	)
 	(segment
@@ -9737,7 +10355,7 @@
 		(end 132.842 117.856)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad26)")
+		(net "Net-(IC1-(OC2B{slash}SDA{slash}INT1)PD1)")
 		(uuid "c436f00e-663a-4199-87d3-8fb69f5a2de0")
 	)
 	(segment
@@ -9745,7 +10363,7 @@
 		(end 147.32 105.156)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad27)")
+		(net "Net-(IC1-(RXD1{slash}INT2)PD2)")
 		(uuid "00000000-0000-0000-0000-0000590ed938")
 	)
 	(segment
@@ -9753,7 +10371,7 @@
 		(end 147.288 105.188)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad27)")
+		(net "Net-(IC1-(RXD1{slash}INT2)PD2)")
 		(uuid "b147264f-7313-46d8-acec-09641b104b03")
 	)
 	(via
@@ -9771,7 +10389,7 @@
 			(back no)
 		)
 		(filling no)
-		(net "Net-(IC1-Pad27)")
+		(net "Net-(IC1-(RXD1{slash}INT2)PD2)")
 		(uuid "d2eb4e83-3b7c-4a49-9826-182edb4ce4f0")
 	)
 	(segment
@@ -9779,7 +10397,7 @@
 		(end 138.938 105.156)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad27)")
+		(net "Net-(IC1-(RXD1{slash}INT2)PD2)")
 		(uuid "00000000-0000-0000-0000-0000590ed93c")
 	)
 	(segment
@@ -9787,7 +10405,7 @@
 		(end 137.414 116.586)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad27)")
+		(net "Net-(IC1-(RXD1{slash}INT2)PD2)")
 		(uuid "00000000-0000-0000-0000-0000590ee02c")
 	)
 	(segment
@@ -9795,7 +10413,7 @@
 		(end 137.414 106.68)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad27)")
+		(net "Net-(IC1-(RXD1{slash}INT2)PD2)")
 		(uuid "00000000-0000-0000-0000-0000590ee030")
 	)
 	(segment
@@ -9803,7 +10421,7 @@
 		(end 138.938 105.156)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad27)")
+		(net "Net-(IC1-(RXD1{slash}INT2)PD2)")
 		(uuid "00000000-0000-0000-0000-0000590ee035")
 	)
 	(segment
@@ -9811,7 +10429,7 @@
 		(end 135.382 118.618)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad27)")
+		(net "Net-(IC1-(RXD1{slash}INT2)PD2)")
 		(uuid "2f3eafad-1a9e-42d8-bd67-ee4ebd391703")
 	)
 	(segment
@@ -9819,7 +10437,7 @@
 		(end 148.082 105.918)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad28)")
+		(net "Net-(IC1-(TXD1{slash}INT3)PD3)")
 		(uuid "00000000-0000-0000-0000-0000590ed915")
 	)
 	(segment
@@ -9827,7 +10445,7 @@
 		(end 148.088 105.924)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad28)")
+		(net "Net-(IC1-(TXD1{slash}INT3)PD3)")
 		(uuid "9c469ad7-c53a-4ff8-8554-ac687210c8d2")
 	)
 	(via
@@ -9845,7 +10463,7 @@
 			(back no)
 		)
 		(filling no)
-		(net "Net-(IC1-Pad28)")
+		(net "Net-(IC1-(TXD1{slash}INT3)PD3)")
 		(uuid "80956d7b-f1af-4393-955f-5aa0159e1359")
 	)
 	(segment
@@ -9853,7 +10471,7 @@
 		(end 139.7 105.918)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad28)")
+		(net "Net-(IC1-(TXD1{slash}INT3)PD3)")
 		(uuid "00000000-0000-0000-0000-0000590ed920")
 	)
 	(segment
@@ -9861,7 +10479,7 @@
 		(end 137.922 107.696)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad28)")
+		(net "Net-(IC1-(TXD1{slash}INT3)PD3)")
 		(uuid "00000000-0000-0000-0000-0000590ed921")
 	)
 	(segment
@@ -9869,7 +10487,7 @@
 		(end 137.922 118.872)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad28)")
+		(net "Net-(IC1-(TXD1{slash}INT3)PD3)")
 		(uuid "00000000-0000-0000-0000-0000590ed92d")
 	)
 	(segment
@@ -9877,7 +10495,7 @@
 		(end 143.764 117.094)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad29)")
+		(net "Net-(IC1-(ICP1)PD4)")
 		(uuid "00000000-0000-0000-0000-0000590ed8ff")
 	)
 	(segment
@@ -9885,7 +10503,7 @@
 		(end 142.24 117.094)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad29)")
+		(net "Net-(IC1-(ICP1)PD4)")
 		(uuid "00000000-0000-0000-0000-0000590ed908")
 	)
 	(segment
@@ -9893,7 +10511,7 @@
 		(end 140.462 118.872)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad29)")
+		(net "Net-(IC1-(ICP1)PD4)")
 		(uuid "00000000-0000-0000-0000-0000590ed90d")
 	)
 	(segment
@@ -9901,7 +10519,7 @@
 		(end 148.888 111.97)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad29)")
+		(net "Net-(IC1-(ICP1)PD4)")
 		(uuid "109a61e7-f874-4d73-a3b9-b938140172f3")
 	)
 	(segment
@@ -9909,7 +10527,7 @@
 		(end 143.002 118.618)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad30)")
+		(net "Net-(IC1-(XCK1)PD5)")
 		(uuid "00000000-0000-0000-0000-0000590ed8f6")
 	)
 	(segment
@@ -9917,7 +10535,7 @@
 		(end 143.002 118.872)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad30)")
+		(net "Net-(IC1-(XCK1)PD5)")
 		(uuid "00000000-0000-0000-0000-0000590ed8fb")
 	)
 	(segment
@@ -9925,7 +10543,7 @@
 		(end 149.688 111.932)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad30)")
+		(net "Net-(IC1-(XCK1)PD5)")
 		(uuid "ca7f67b0-ef12-42a9-892e-bcb41256ec71")
 	)
 	(segment
@@ -9933,7 +10551,7 @@
 		(end 145.542 116.84)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad31)")
+		(net "Net-(IC1-(T1)PD6)")
 		(uuid "00000000-0000-0000-0000-0000590ed8e7")
 	)
 	(segment
@@ -9941,7 +10559,7 @@
 		(end 145.542 118.872)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad31)")
+		(net "Net-(IC1-(T1)PD6)")
 		(uuid "00000000-0000-0000-0000-0000590ed8f2")
 	)
 	(segment
@@ -9949,7 +10567,7 @@
 		(end 150.488 111.894)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad31)")
+		(net "Net-(IC1-(T1)PD6)")
 		(uuid "3ff67786-6888-45aa-8ddc-873066d1f824")
 	)
 	(segment
@@ -9957,7 +10575,7 @@
 		(end 148.082 115.062)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad32)")
+		(net "Net-(IC1-(T0)PD7)")
 		(uuid "00000000-0000-0000-0000-0000590ed8dd")
 	)
 	(segment
@@ -9965,7 +10583,7 @@
 		(end 148.082 118.872)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad32)")
+		(net "Net-(IC1-(T0)PD7)")
 		(uuid "00000000-0000-0000-0000-0000590ed8e3")
 	)
 	(segment
@@ -9973,7 +10591,7 @@
 		(end 151.288 111.856)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad32)")
+		(net "Net-(IC1-(T0)PD7)")
 		(uuid "e1d4e60d-f51f-4dae-bcf1-50ea869ab864")
 	)
 	(segment
@@ -10413,7 +11031,7 @@
 		(end 151.003 98.044)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad43)")
+		(net "Net-(IC1-(ALE{slash}~{HWB})PE2)")
 		(uuid "00000000-0000-0000-0000-0000590f018b")
 	)
 	(segment
@@ -10421,7 +11039,7 @@
 		(end 152.273 109.855)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad43)")
+		(net "Net-(IC1-(ALE{slash}~{HWB})PE2)")
 		(uuid "00000000-0000-0000-0000-0000590f01d3")
 	)
 	(segment
@@ -10429,7 +11047,7 @@
 		(end 152.32 109.902)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad43)")
+		(net "Net-(IC1-(ALE{slash}~{HWB})PE2)")
 		(uuid "0b03587a-9aa7-4c91-9732-ba753d704511")
 	)
 	(segment
@@ -10437,7 +11055,7 @@
 		(end 151.035 98.076)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad43)")
+		(net "Net-(IC1-(ALE{slash}~{HWB})PE2)")
 		(uuid "af7d6d0a-d73c-400d-8ac6-4d97e75efd5d")
 	)
 	(via
@@ -10455,7 +11073,7 @@
 			(back no)
 		)
 		(filling no)
-		(net "Net-(IC1-Pad43)")
+		(net "Net-(IC1-(ALE{slash}~{HWB})PE2)")
 		(uuid "8aa901e5-481e-4eac-ae48-9c32489febd6")
 	)
 	(via
@@ -10473,7 +11091,7 @@
 			(back no)
 		)
 		(filling no)
-		(net "Net-(IC1-Pad43)")
+		(net "Net-(IC1-(ALE{slash}~{HWB})PE2)")
 		(uuid "b875a03f-156c-44ec-a03e-213baa3dbc68")
 	)
 	(segment
@@ -10481,7 +11099,7 @@
 		(end 146.177 102.87)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad43)")
+		(net "Net-(IC1-(ALE{slash}~{HWB})PE2)")
 		(uuid "00000000-0000-0000-0000-0000590f0193")
 	)
 	(segment
@@ -10489,7 +11107,7 @@
 		(end 136.144 102.87)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad43)")
+		(net "Net-(IC1-(ALE{slash}~{HWB})PE2)")
 		(uuid "00000000-0000-0000-0000-0000590f0194")
 	)
 	(segment
@@ -10497,7 +11115,7 @@
 		(end 134.366 104.648)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad43)")
+		(net "Net-(IC1-(ALE{slash}~{HWB})PE2)")
 		(uuid "00000000-0000-0000-0000-0000590f0199")
 	)
 	(segment
@@ -10505,7 +11123,7 @@
 		(end 151.003 108.585)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad43)")
+		(net "Net-(IC1-(ALE{slash}~{HWB})PE2)")
 		(uuid "00000000-0000-0000-0000-0000590f01d7")
 	)
 	(segment
@@ -10513,7 +11131,7 @@
 		(end 151.003 98.044)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad43)")
+		(net "Net-(IC1-(ALE{slash}~{HWB})PE2)")
 		(uuid "00000000-0000-0000-0000-0000590f01d8")
 	)
 	(segment
@@ -10521,7 +11139,7 @@
 		(end 154.94 93.98)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad47)")
+		(net "Net-(IC1-(AD4)PA4)")
 		(uuid "00000000-0000-0000-0000-0000590ed2a0")
 	)
 	(segment
@@ -10529,7 +11147,7 @@
 		(end 154.94 88.392)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad47)")
+		(net "Net-(IC1-(AD4)PA4)")
 		(uuid "00000000-0000-0000-0000-0000590ed2a5")
 	)
 	(segment
@@ -10537,7 +11155,7 @@
 		(end 153.162 86.614)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad47)")
+		(net "Net-(IC1-(AD4)PA4)")
 		(uuid "00000000-0000-0000-0000-0000590ed2ac")
 	)
 	(segment
@@ -10545,7 +11163,7 @@
 		(end 154.044 94.876)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad47)")
+		(net "Net-(IC1-(AD4)PA4)")
 		(uuid "ef38a9b5-7aee-4fc9-b98e-9f5076c2a6a5")
 	)
 	(segment
@@ -10553,7 +11171,7 @@
 		(end 147.32 94.488)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad54)")
+		(net "Net-(IC1-(ADC7{slash}TDI)PF7)")
 		(uuid "00000000-0000-0000-0000-0000590ed2b6")
 	)
 	(segment
@@ -10561,7 +11179,7 @@
 		(end 145.034 85.598)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad54)")
+		(net "Net-(IC1-(ADC7{slash}TDI)PF7)")
 		(uuid "00000000-0000-0000-0000-0000590ed2d9")
 	)
 	(segment
@@ -10569,7 +11187,7 @@
 		(end 143.256 83.82)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad54)")
+		(net "Net-(IC1-(ADC7{slash}TDI)PF7)")
 		(uuid "00000000-0000-0000-0000-0000590ed2da")
 	)
 	(segment
@@ -10577,7 +11195,7 @@
 		(end 147.288 94.456)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad54)")
+		(net "Net-(IC1-(ADC7{slash}TDI)PF7)")
 		(uuid "540f3eb8-bbbb-4f09-8b5e-f1a94c65a95d")
 	)
 	(via
@@ -10595,7 +11213,7 @@
 			(back no)
 		)
 		(filling no)
-		(net "Net-(IC1-Pad54)")
+		(net "Net-(IC1-(ADC7{slash}TDI)PF7)")
 		(uuid "605dbae8-425f-4cb5-81c4-382a8769c93d")
 	)
 	(via
@@ -10613,7 +11231,7 @@
 			(back no)
 		)
 		(filling no)
-		(net "Net-(IC1-Pad54)")
+		(net "Net-(IC1-(ADC7{slash}TDI)PF7)")
 		(uuid "94de526c-632a-4b3b-ab38-36799adba409")
 	)
 	(segment
@@ -10621,7 +11239,7 @@
 		(end 147.32 86.868)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad54)")
+		(net "Net-(IC1-(ADC7{slash}TDI)PF7)")
 		(uuid "00000000-0000-0000-0000-0000590ed2c3")
 	)
 	(segment
@@ -10629,7 +11247,7 @@
 		(end 146.05 85.598)
 		(width 0.25)
 		(layer "B.Cu")
-		(net "Net-(IC1-Pad54)")
+		(net "Net-(IC1-(ADC7{slash}TDI)PF7)")
 		(uuid "00000000-0000-0000-0000-0000590ed2c4")
 	)
 	(segment
@@ -10637,7 +11255,7 @@
 		(end 144.018 85.598)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad55)")
+		(net "Net-(IC1-(ADC6{slash}TDO)PF6)")
 		(uuid "00000000-0000-0000-0000-0000590ed2ec")
 	)
 	(segment
@@ -10645,7 +11263,7 @@
 		(end 142.24 85.598)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad55)")
+		(net "Net-(IC1-(ADC6{slash}TDO)PF6)")
 		(uuid "00000000-0000-0000-0000-0000590ed2f1")
 	)
 	(segment
@@ -10653,7 +11271,7 @@
 		(end 140.462 83.82)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad55)")
+		(net "Net-(IC1-(ADC6{slash}TDO)PF6)")
 		(uuid "00000000-0000-0000-0000-0000590ed2f6")
 	)
 	(segment
@@ -10661,7 +11279,7 @@
 		(end 146.488 88.068)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad55)")
+		(net "Net-(IC1-(ADC6{slash}TDO)PF6)")
 		(uuid "c40b5e71-4b05-4811-a1fd-6afb54ac593d")
 	)
 	(segment
@@ -10669,7 +11287,7 @@
 		(end 143.764 86.106)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad56)")
+		(net "Net-(IC1-(ADC5{slash}TMS)PF5)")
 		(uuid "00000000-0000-0000-0000-0000590ed2fb")
 	)
 	(segment
@@ -10677,7 +11295,7 @@
 		(end 139.954 86.106)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad56)")
+		(net "Net-(IC1-(ADC5{slash}TMS)PF5)")
 		(uuid "00000000-0000-0000-0000-0000590ed300")
 	)
 	(segment
@@ -10685,7 +11303,7 @@
 		(end 137.668 83.82)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad56)")
+		(net "Net-(IC1-(ADC5{slash}TMS)PF5)")
 		(uuid "00000000-0000-0000-0000-0000590ed305")
 	)
 	(segment
@@ -10693,7 +11311,7 @@
 		(end 145.688 88.03)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad56)")
+		(net "Net-(IC1-(ADC5{slash}TMS)PF5)")
 		(uuid "7ff25877-75be-411f-9e34-f745e0880cb1")
 	)
 	(segment
@@ -10701,7 +11319,7 @@
 		(end 143.51 86.614)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad57)")
+		(net "Net-(IC1-(ADC4{slash}TCK)PF4)")
 		(uuid "00000000-0000-0000-0000-0000590ed30c")
 	)
 	(segment
@@ -10709,7 +11327,7 @@
 		(end 137.668 86.614)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad57)")
+		(net "Net-(IC1-(ADC4{slash}TCK)PF4)")
 		(uuid "00000000-0000-0000-0000-0000590ed30f")
 	)
 	(segment
@@ -10717,7 +11335,7 @@
 		(end 134.874 83.82)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad57)")
+		(net "Net-(IC1-(ADC4{slash}TCK)PF4)")
 		(uuid "00000000-0000-0000-0000-0000590ed313")
 	)
 	(segment
@@ -10725,7 +11343,7 @@
 		(end 144.888 87.992)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(IC1-Pad57)")
+		(net "Net-(IC1-(ADC4{slash}TCK)PF4)")
 		(uuid "e242bac8-ff2f-4e8a-a9db-7d9e8f60dd7c")
 	)
 	(segment
@@ -10733,7 +11351,7 @@
 		(end 130.302 94.996)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(P1-Pad2)")
+		(net "Net-(P1-D-)")
 		(uuid "00000000-0000-0000-0000-0000590eda30")
 	)
 	(segment
@@ -10741,7 +11359,7 @@
 		(end 130.302 99.568)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(P1-Pad2)")
+		(net "Net-(P1-D-)")
 		(uuid "00000000-0000-0000-0000-0000590eda39")
 	)
 	(segment
@@ -10749,7 +11367,7 @@
 		(end 129.524 100.346)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(P1-Pad2)")
+		(net "Net-(P1-D-)")
 		(uuid "00000000-0000-0000-0000-0000590eda3c")
 	)
 	(segment
@@ -10757,7 +11375,7 @@
 		(end 127.992 100.346)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(P1-Pad2)")
+		(net "Net-(P1-D-)")
 		(uuid "00000000-0000-0000-0000-0000590eda41")
 	)
 	(segment
@@ -10765,7 +11383,7 @@
 		(end 130.556 94.742)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(P1-Pad2)")
+		(net "Net-(P1-D-)")
 		(uuid "c46d489e-db5e-4b64-9a5d-d574db43a145")
 	)
 	(segment
@@ -10773,7 +11391,7 @@
 		(end 129.556 102.346)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(P1-Pad3)")
+		(net "Net-(P1-D+)")
 		(uuid "00000000-0000-0000-0000-0000590eda44")
 	)
 	(segment
@@ -10781,7 +11399,7 @@
 		(end 127.992 102.346)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(P1-Pad3)")
+		(net "Net-(P1-D+)")
 		(uuid "00000000-0000-0000-0000-0000590eda4c")
 	)
 	(segment
@@ -10789,7 +11407,7 @@
 		(end 132 99.902)
 		(width 0.25)
 		(layer "F.Cu")
-		(net "Net-(P1-Pad3)")
+		(net "Net-(P1-D+)")
 		(uuid "f9d280a7-2821-42a8-a97a-86b7b0e81798")
 	)
 	(zone
