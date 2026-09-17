@@ -19,3 +19,8 @@ _autosave-*
 # Exported BOM files
 *.xml
 *.csv
+# KiCad 6+ per-user / transient files
+*.kicad_prl
+*-backups/
+fp-info-cache
+~*.lck

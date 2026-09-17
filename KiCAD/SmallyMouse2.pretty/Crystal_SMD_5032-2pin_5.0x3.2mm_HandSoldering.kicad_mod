@@ -1,0 +1,293 @@
+(footprint "Crystal_SMD_5032-2pin_5.0x3.2mm_HandSoldering"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "SMD Crystal SERIES SMD2520/2 http://www.icbase.com/File/PDF/HKC/HKC00061008.pdf, hand-soldering, 5.0x3.2mm^2 package")
+	(tags "SMD SMT crystal hand-soldering")
+	(property "Reference" "Y1"
+		(at -5.588 -0.889 0)
+		(layer "F.SilkS")
+		(uuid "2571cf15-4d2e-4038-a1be-0faf8bcab6d0")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "16 MHz Crystal"
+		(at 0 2.8 0)
+		(layer "F.Fab")
+		(uuid "16f22004-04a1-4d89-af0a-afe756b35c64")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "99de5024-9c76-46b0-8f4a-5f32f5312eb2")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "0602d0d1-dfd4-45ed-be93-301436ae8976")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -4.55 -1.8)
+		(end -4.55 1.8)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "48d3d1bc-a0d5-454b-8a4f-19d1e5364045")
+	)
+	(fp_line
+		(start -4.55 1.8)
+		(end 2.7 1.8)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "5e790316-6ba0-4f62-af9c-79ccf7d5e1e2")
+	)
+	(fp_line
+		(start 2.7 -1.8)
+		(end -4.55 -1.8)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "f9162094-4d79-4d90-b7e7-8d8884419e12")
+	)
+	(fp_circle
+		(center 0 0)
+		(end 0.093333 0)
+		(stroke
+			(width 0.186667)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Adhes")
+		(uuid "2d513ac0-ad17-48be-b055-7a7180d4ad46")
+	)
+	(fp_circle
+		(center 0 0)
+		(end 0.213333 0)
+		(stroke
+			(width 0.133333)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Adhes")
+		(uuid "d3e74efa-2560-4404-b88a-9839afb903d4")
+	)
+	(fp_circle
+		(center 0 0)
+		(end 0.333333 0)
+		(stroke
+			(width 0.133333)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Adhes")
+		(uuid "985f6b68-b985-40e7-9d1f-596dbb854020")
+	)
+	(fp_circle
+		(center 0 0)
+		(end 0.4 0)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Adhes")
+		(uuid "47417954-4a0e-4fa5-9be9-54bddc821c91")
+	)
+	(fp_line
+		(start -4.6 -1.9)
+		(end -4.6 1.9)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "8192b14f-b5ac-4043-823e-64e7918a9c6b")
+	)
+	(fp_line
+		(start -4.6 1.9)
+		(end 4.6 1.9)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "86ff8cc4-36ea-41c8-ac7f-006c0f48e92e")
+	)
+	(fp_line
+		(start 4.6 -1.9)
+		(end -4.6 -1.9)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "bf09b0e3-b617-4729-b36a-ef36f1dc0ebe")
+	)
+	(fp_line
+		(start 4.6 1.9)
+		(end 4.6 -1.9)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "acc9321f-0309-4a69-86f4-9a6acc89c88c")
+	)
+	(fp_line
+		(start -2.5 -1.4)
+		(end -2.3 -1.6)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "424e5a13-f9c9-42da-8d0e-84a7d872f126")
+	)
+	(fp_line
+		(start -2.5 0.6)
+		(end -1.5 1.6)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "b052fcbf-098f-43da-aecb-7f400164aa2a")
+	)
+	(fp_line
+		(start -2.5 1.4)
+		(end -2.5 -1.4)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "c92550dc-fff0-4e0d-b72e-d26f2883ec52")
+	)
+	(fp_line
+		(start -2.3 -1.6)
+		(end 2.3 -1.6)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "eca91b63-2263-4a51-8e90-42e1a1b697ba")
+	)
+	(fp_line
+		(start -2.3 1.6)
+		(end -2.5 1.4)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "89a67bd6-b809-48aa-9c12-fd1719c1f245")
+	)
+	(fp_line
+		(start 2.3 -1.6)
+		(end 2.5 -1.4)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "314272fb-87e1-406f-a087-e0d25761f48c")
+	)
+	(fp_line
+		(start 2.3 1.6)
+		(end -2.3 1.6)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "8fddc666-942f-4b9b-9111-9ea9e1f4f11e")
+	)
+	(fp_line
+		(start 2.5 -1.4)
+		(end 2.5 1.4)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "f025402a-7dbd-4a86-8453-94cef2452d5f")
+	)
+	(fp_line
+		(start 2.5 1.4)
+		(end 2.3 1.6)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "ace70d4d-2d4a-4263-813d-fb211e694eba")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "7b374d59-29a5-4438-9d09-18030e4817ad")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at -2.6 0)
+		(size 3.5 2.4)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "bd5a351e-7cd3-4d54-bbf9-d8fd874def47")
+	)
+	(pad "2" smd rect
+		(at 2.6 0)
+		(size 3.5 2.4)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "ba25a031-bf94-4475-a292-35acecad4e20")
+	)
+	(embedded_fonts no)
+	(model "${KISYS3DMOD}/Crystals.3dshapes/Crystal_SMD_5032-2pin_5.0x3.2mm_HandSoldering.wrl"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 0.393701 0.393701 0.393701)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)
