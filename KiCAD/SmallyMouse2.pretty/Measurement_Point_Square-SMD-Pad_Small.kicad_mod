@@ -1,0 +1,101 @@
+(footprint "Measurement_Point_Square-SMD-Pad_Small"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Mesurement Point, Square, SMD Pad,  1.5mm x 1.5mm,")
+	(tags "Mesurement Point Square SMD Pad 1.5x1.5mm")
+	(property "Reference" "RST"
+		(at 0 -2 0)
+		(layer "F.SilkS")
+		(uuid "3e421791-0f9e-47bd-8ce9-4812dc85f9f2")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "~{RESET}"
+		(at 0 2 0)
+		(layer "F.Fab")
+		(uuid "825261be-43e5-461f-8c76-48e5e9677799")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "7505791f-153b-45d1-9c14-99741cd00d28")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "75bb84c6-8ae4-423f-b152-b4f60e5e92a3")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(attr exclude_from_pos_files exclude_from_bom)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -1 -1)
+		(end 1 -1)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "a6848aec-1a8c-4823-800f-d8c2da7921a0")
+	)
+	(fp_line
+		(start -1 1)
+		(end -1 -1)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "1f360822-4d8d-47d8-8ddf-b18be1e0ec1b")
+	)
+	(fp_line
+		(start 1 -1)
+		(end 1 1)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "f5bc9d6e-2a23-43df-87e2-6d1823161a2b")
+	)
+	(fp_line
+		(start 1 1)
+		(end -1 1)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "b4d057ac-e1f5-41f9-8b0e-92382f40d222")
+	)
+	(pad "1" smd rect
+		(at 0 0)
+		(size 1.5 1.5)
+		(layers "F.Cu" "F.Mask")
+		(uuid "5ea88f1b-77a2-4341-a593-15ef46ff05d5")
+	)
+	(embedded_fonts no)
+)
