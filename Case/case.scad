@@ -54,7 +54,7 @@ open_j5 = true;
 // J6 reset jumper
 open_j6 = true;
 // Gap above a covered connector; the lid is raised to suit
-lid_clearance = 0.5;
+lid_clearance = 1.0;
 
 /* [Hidden] */
 // Connectors under the lid, and whether each has an opening
