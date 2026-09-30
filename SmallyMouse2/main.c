@@ -56,12 +56,26 @@
 // Q_MAXRATE is the maximum output frequency with no rate limit (this also limits how often the
 // output ISRs are called, so it should not be raised much).
 //
-// For 8-bit machines it is recommended that the speed doesn't exceed 500 Hz.  Q_RATELIMIT is
+// For 8-bit machines it is recommended that the speed doesn't exceed 1000 Hz.  Q_RATELIMIT is
 // only applied if the 'slow' configuration jumper is shorted (i.e. on)
+//
+// On the Acorn 8-bit user port one quadrature line per axis drives a 6522 VIA
+// interrupt input (CB1 for X, CB2 for Y) and the other line is read from port B by the
+// interrupt handler to get the direction.  The VIA detects the edge in under 1 uS (so the
+// VIA itself is not the limit) but the direction line changes one edge after the interrupt
+// edge, so the 6502 must reach the handler and read port B within one edge period
+// (1 / (4 * Q_RATELIMIT)).  If it doesn't, the direction is misread and the movement stalls
+// or reverses.  1000 Hz gives 250 uS, several times the typical MOS interrupt latency.
+//
+// The VIA interrupts once per quadrature cycle for each axis, so the rate also sets the load
+// on the retro computer's CPU when the mouse moves quickly (2 * Q_RATELIMIT interrupts per
+// second with both axes moving).  Higher rates leave less time for the running program.
 //
 // The output is never faster than the configured frequency (the timer period is rounded up)
 #define Q_MAXRATE 3906
-#define Q_RATELIMIT 500
+#ifndef Q_RATELIMIT
+#define Q_RATELIMIT 1000
+#endif
 
 // Quadrature output drain time
 //
@@ -78,6 +92,11 @@
 // to move after the USB mouse has stopped).  This setting limits the maximum number of buffered
 // movements to the quadrature output.  If the buffer reaches this value further USB movements
 // will be discarded
+//
+// When the rate limit is on the buffer is limited to the movement that can be output at
+// Q_RATELIMIT in Q_DRAINTIME instead (see Q_RATELIMIT_BUFFERLIMIT), so the quadrature mouse
+// lags the USB mouse by no more than Q_DRAINTIME.  Movement faster than the rate limit is
+// discarded rather than output late.
 #define Q_BUFFERLIMIT 300
 
 // DPI Divider
@@ -125,6 +144,17 @@
 #endif
 #if (DPI_DIVIDER < 1) || (DPI_DIVIDER > 128)
 #error "DPI_DIVIDER is out of range"
+#endif
+
+// Quadrature output buffer limit when the rate limit is on: the number of edges output at
+// Q_RATELIMIT in Q_DRAINTIME (40 at 1000 Hz), at least 1 and no more than Q_BUFFERLIMIT
+#define Q_RATELIMIT_DRAINUNITS (Q_DRAINTIME_TICKS / Q_RATELIMIT_TICKS)
+#if Q_RATELIMIT_DRAINUNITS < 1
+#define Q_RATELIMIT_BUFFERLIMIT 1
+#elif Q_RATELIMIT_DRAINUNITS > Q_BUFFERLIMIT
+#define Q_RATELIMIT_BUFFERLIMIT Q_BUFFERLIMIT
+#else
+#define Q_RATELIMIT_BUFFERLIMIT Q_RATELIMIT_DRAINUNITS
 #endif
 
 // Interrupt Service Routines for quadrature output -------------------------------------------------------------------
@@ -553,6 +583,7 @@ uint16_t processMouseMovement(int8_t movementUnits, uint8_t axis, bool limitRate
 {
 	uint16_t bufferedUnits = 0;
 	uint32_t periodTicks = 0;
+	int16_t bufferLimit = limitRate ? Q_RATELIMIT_BUFFERLIMIT : Q_BUFFERLIMIT;
 	static int8_t dpiRemainder[2] = {0,0};
 	volatile int16_t *mouseDistance = (axis == MOUSEX) ? &mouseDistanceX : &mouseDistanceY;
 	
@@ -579,7 +610,7 @@ uint16_t processMouseMovement(int8_t movementUnits, uint8_t axis, bool limitRate
 		if (movementUnits > 0) *mouseDistance += movementUnits;
 		else *mouseDistance -= movementUnits;
 		
-		if (*mouseDistance > Q_BUFFERLIMIT) *mouseDistance = Q_BUFFERLIMIT;
+		if (*mouseDistance > bufferLimit) *mouseDistance = bufferLimit;
 		
 		bufferedUnits = *mouseDistance;
 	}
@@ -623,10 +654,10 @@ uint16_t processMouseMovement(int8_t movementUnits, uint8_t axis, bool limitRate
 		// Each timer tick is 0.5 uS
 		//
 		// Convert hertz into period in uS
-		// 500 Hz = 1,000,000 / 500 = 2000 uS
+		// 1000 Hz = 1,000,000 / 1000 = 1000 uS
 		//
 		// Convert period into timer ticks (/ 4 due to quadrature)
-		// 2000 uS / (0.5 * 4) = 1000 ticks
+		// 1000 uS / (0.5 * 4) = 500 ticks
 		//
 		// The ticks are rounded up, so the output never exceeds the
 		// rate limit (see Q_HZ_TO_TICKS)
