@@ -242,7 +242,7 @@
       "internal_id": "",
       "mfg": "",
       "mpn": "",
-      "sch_revision": ""
+      "sch_revision": "2.1"
     },
     "layer_pairs": [],
     "layer_presets": [],
@@ -660,7 +660,7 @@
       {
         "filename": "SmallyMouse2.kicad_sch",
         "name": "SmallyMouse2",
-        "uuid": "00000000-0000-0000-0000-000000000000"
+        "uuid": "3243e337-5b75-4765-b867-6e38ad1f5f8b"
       }
     ],
     "used_designators": "TMS1,TDI1,TCK1,RST1,GND1,TDO1,5V1",
@@ -669,7 +669,7 @@
   "sheets": [
     [
       "3243e337-5b75-4765-b867-6e38ad1f5f8b",
-      "Root"
+      "SmallyMouse2"
     ]
   ],
   "text_variables": {},

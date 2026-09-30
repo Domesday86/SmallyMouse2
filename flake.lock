@@ -1,0 +1,45 @@
+{
+  "nodes": {
+    "lufa": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1783751427,
+        "narHash": "sha256-uvro7wlPUqYtZj41BbxWsEMUsRbtht73k0xm1VEhxI0=",
+        "owner": "abcminiuser",
+        "repo": "lufa",
+        "rev": "90d65ba059d91078a34b9c26c8772ee14b556a13",
+        "type": "github"
+      },
+      "original": {
+        "owner": "abcminiuser",
+        "repo": "lufa",
+        "rev": "90d65ba059d91078a34b9c26c8772ee14b556a13",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1790635395,
+        "narHash": "sha256-bNyvoIyOCu7lzoCpWKWGIsHpTtERUWzqYWFPlN++WTw=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "7fc6f2c20af09cdcaf48b92ec3121860139ec668",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-26.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "lufa": "lufa",
+        "nixpkgs": "nixpkgs"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

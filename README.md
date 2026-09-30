@@ -12,7 +12,84 @@ SmallyMouse2 supports both JTAG and USB bootloader programming.  The AT90USB1287
 
 ## Installation
 
-Note: This is an Atmel Studio 7 project that can be loaded and compiled by the IDE
+The firmware is built with the open-source AVR GNU toolchain (avr-gcc, avr-binutils, avr-libc) and CMake. A Nix flake supplies the complete, pinned toolchain along with the programming tools (avrdude for the Atmel-ICE, dfu-programmer for the USB bootloader).
+
+### Building
+
+Enter the development shell and build out-of-tree using a CMake preset:
+
+    nix develop
+    cmake --preset release          # or: cmake --preset debug
+    cmake --build --preset release
+
+The output is written to `build/release/`:
+
+| File                | Use                                                                 |
+|---------------------|---------------------------------------------------------------------|
+| `SmallyMouse2.hex`  | Flash image (Intel HEX) - JTAG via avrdude, DFU via dfu-programmer  |
+| `SmallyMouse2-with-bootloader.hex` | Firmware merged with the LUFA DFU bootloader - JTAG via avrdude |
+| `SmallyMouse2.elf`  | Full image with symbols - JTAG via Microchip Studio / debugging     |
+| `SmallyMouse2.eep`  | EEPROM image (currently empty)                                      |
+| `SmallyMouse2.srec` | Flash image (Motorola S-record)                                     |
+| `SmallyMouse2.lss`  | Extended listing                                                    |
+| `SmallyMouse2.map`  | Linker map                                                          |
+
+Alternatively `nix build` produces the same files in `./result/` without entering a shell.
+
+Without Nix, any avr-gcc toolchain, CMake 3.24+ and Ninja on the `PATH` will work with the same commands.
+
+### Programming via JTAG (Atmel-ICE)
+
+Connect the Atmel-ICE to the JTAG header, then:
+
+    cmake --build --preset release --target flash-jtag
+
+or, without a build tree, `nix run .#flash-jtag`. The fuses and lock bits can be read with the `read-fuses-jtag` target.
+
+Programming over JTAG performs a chip erase, which also removes the DFU bootloader, so `flash-jtag` writes `SmallyMouse2-with-bootloader.hex` (the firmware merged with the LUFA DFU bootloader) and the board can still be updated over USB afterwards. The bootloader image comes from the Nix flake; without it (`BOOTLOADER_HEX` unset) `flash-jtag` writes the firmware alone and the bootloader is lost.
+
+### Restoring the DFU bootloader and fuses (Atmel-ICE)
+
+If the bootloader is missing (for example after programming with another tool) or the fuses no longer select it, connect the Atmel-ICE and run:
+
+    nix run .#flash-bootloader-jtag
+
+or, from the dev shell, `cmake --build --preset release --target flash-bootloader-jtag`. This builds the LUFA DFU bootloader from the pinned LUFA source, erases the chip, writes the bootloader and sets the high/extended fuses to the factory values (`hfuse 0x99`, `efuse 0xF3`: 8 KB boot section, JTAG enabled, HWB bootloader entry enabled). The LUFA bootloader uses the same USB ID as the factory one, so the DFU steps below work unchanged. Any application firmware is removed; reprogram it over USB afterwards.
+
+### Programming via USB (DFU bootloader)
+
+Put the AT90USB1287 into its factory DFU bootloader (hold HWB low while resetting), then:
+
+    cmake --build --preset release --target flash-dfu
+
+or `nix run .#flash-dfu`. The device is erased, programmed and then started.
+
+### USB permissions (udev)
+
+On Linux, programming as a normal user needs udev rules for two devices:
+
+| Device                        | USB ID      | Used by        |
+|-------------------------------|-------------|----------------|
+| Atmel-ICE                     | `03eb:2141` | avrdude        |
+| AT90USB1287 DFU bootloader    | `03eb:2ffb` | dfu-programmer |
+
+The Atmel-ICE needs two rules. avrdude can reach it through libusb or through hidapi, and each uses a different device node (`usb` and `hidraw`).
+
+On NixOS, add the rules to your system configuration:
+
+```nix
+services.udev.extraRules = ''
+  # Atmel-ICE (AVR JTAG programmer) - usb node for libusb, hidraw node for hidapi
+  SUBSYSTEM=="usb", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2141", MODE="660", GROUP="users"
+  SUBSYSTEM=="hidraw", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2141", MODE="660", GROUP="users"
+  # AT90USB1287 DFU bootloader
+  SUBSYSTEM=="usb", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2ffb", MODE="660", GROUP="users"
+'';
+```
+
+On other distributions, put the same three lines in a file such as `/etc/udev/rules.d/70-smallymouse2.rules`. Make sure your user is in the group the rules name, or change `GROUP` to one it is in (for example `plugdev` on Debian and Ubuntu). Then reload the rules with `sudo udevadm control --reload-rules`.
+
+On either system, unplug and replug the device after adding the rules.
 
 Please see http://www.waitingforfriday.com/?p=827 for detailed documentation about SmallyMouse2
 

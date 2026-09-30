@@ -37,6 +37,9 @@
 
 #include "ConfigDescriptor.h"
 
+/** Interface number of the mouse HID interface found by ProcessConfigurationDescriptor(). */
+uint8_t MouseInterfaceNumber = 0;
+
 /** Reads and processes an attached device's descriptors, to determine compatibility and pipe configurations. This
  *  routine will read in the entire configuration descriptor, and configure the hosts pipes to correctly communicate
  *  with compatible devices.
@@ -96,6 +99,9 @@ uint8_t ProcessConfigurationDescriptor(void)
 		if ((EndpointData->EndpointAddress & ENDPOINT_DIR_MASK) == ENDPOINT_DIR_IN)
 		  DataINEndpoint = EndpointData;
 	}
+
+	/* Save the interface number, as class requests (e.g. SetProtocol) must be sent to this interface */
+	MouseInterfaceNumber = HIDInterface->InterfaceNumber;
 
 	/* Configure the HID data IN pipe */
 	Pipe_ConfigurePipe(MOUSE_DATA_IN_PIPE, EP_TYPE_INTERRUPT, DataINEndpoint->EndpointAddress, DataINEndpoint->EndpointSize, 1);

@@ -1,28 +1,10 @@
-/************************************************************************
-	main.h
-
-	Main functions
-    SmallyMouse2 - USB to quadrature mouse converter
-    Copyright (C) 2017-2020 Simon Inns
-
-	This file is part of SmallyMouse2.
-
-    SmallyMouse2 is free software: you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-	Email: simon.inns@gmail.com
-
-************************************************************************/
+/*
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * SPDX-FileCopyrightText: 2017-2026 Simon Inns <simon.inns@gmail.com>
+ *
+ * main.h - Main functions
+ * SmallyMouse2 - USB to quadrature mouse converter
+ */
 
 #ifndef _MAIN_H_
 #define _MAIN_H_
@@ -123,7 +105,11 @@
 void initialiseHardware(void);
 void initialiseTimers(void);
 void processMouse(void);
-uint8_t processMouseMovement(int8_t movementUnits, uint8_t axis, bool limitRate, bool dpiDivide);
+uint8_t mapButtons(uint8_t buttons);
+void setButtonMapping(uint16_t vendorId, uint16_t productId);
+void reportButtons(uint8_t buttons);
+void startQuadratureTimers(void);
+uint16_t processMouseMovement(int8_t movementUnits, uint8_t axis, bool limitRate, bool dpiDivide);
 
 // USB callback event handlers (LUFA)
 void EVENT_USB_Host_HostError(const uint8_t ErrorCode);
