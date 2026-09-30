@@ -2,6 +2,8 @@
 
 SmallyMouse2 is the AT90USB1287 firmware source code and KiCAD schematic/PCB design for the SmallyMouse2 project.
 
+Detailed documentation is available on the [SmallyMouse2 wiki](https://github.com/domesday86/SmallyMouse2/wiki).
+
 The schematic and PCB design in `KiCAD/` are in the KiCad 10 file format and require KiCad 10 or later to open. The original KiCad 4 files are available in the git history (commit `66cf90d` and earlier).
 
 ## Motivation
@@ -129,8 +131,6 @@ Without the GUI, `nix build .#case` renders `case-base.stl`, `case-lid.stl` and 
     openscad -o case-lid.stl -D 'part="lid"' Case/case.scad
 
 Component heights that are not in the KiCad data (the USB connector, IDC header and pin headers) use typical datasheet values, set near the top of `pcb.scad`; check them against the parts fitted before printing.
-
-Please see the [SmallyMouse2 wiki](https://github.com/domesday86/SmallyMouse2/wiki) for detailed documentation about SmallyMouse2
 
 ## Author
 
