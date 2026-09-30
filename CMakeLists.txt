@@ -158,6 +158,29 @@ install(FILES ${FW_ELF} ${FW_HEX} ${FW_EEP} ${FW_SREC} ${FW_LSS}
               ${CMAKE_CURRENT_BINARY_DIR}/SmallyMouse2.map
         DESTINATION .)
 
+# DFU bootloader image; the nix flake builds it from LUFA and passes its path
+# via SMALLYMOUSE2_BOOTLOADER_HEX (dev shell) or -DBOOTLOADER_HEX (nix build).
+# When set, the firmware is also merged with it into a single flash image so
+# that programming over JTAG keeps a working bootloader.
+set(BOOTLOADER_HEX "" CACHE FILEPATH "DFU bootloader image (Intel HEX)")
+if(DEFINED ENV{SMALLYMOUSE2_BOOTLOADER_HEX})
+    set(BOOTLOADER_HEX $ENV{SMALLYMOUSE2_BOOTLOADER_HEX})
+endif()
+
+if(BOOTLOADER_HEX)
+    set(FW_BL_HEX ${CMAKE_CURRENT_BINARY_DIR}/SmallyMouse2-with-bootloader.hex)
+    add_custom_command(
+        OUTPUT  ${FW_BL_HEX}
+        COMMAND ${CMAKE_COMMAND} -DFIRMWARE=${FW_HEX} -DBOOTLOADER=${BOOTLOADER_HEX}
+                -DOUTPUT=${FW_BL_HEX} -P ${CMAKE_CURRENT_SOURCE_DIR}/cmake/merge-hex.cmake
+        DEPENDS SmallyMouse2 ${FW_HEX} ${BOOTLOADER_HEX}
+                ${CMAKE_CURRENT_SOURCE_DIR}/cmake/merge-hex.cmake
+        VERBATIM
+    )
+    add_custom_target(firmware-with-bootloader ALL DEPENDS ${FW_BL_HEX})
+    install(FILES ${FW_BL_HEX} DESTINATION .)
+endif()
+
 # ---------------------------------------------------------------------------
 # Flashing targets
 # ---------------------------------------------------------------------------
@@ -165,23 +188,27 @@ install(FILES ${FW_ELF} ${FW_HEX} ${FW_EEP} ${FW_SREC} ${FW_LSS}
 find_program(AVRDUDE avrdude)
 find_program(DFU_PROGRAMMER dfu-programmer)
 
-# DFU bootloader image for flash-bootloader-jtag; the nix dev shell builds it
-# from LUFA and passes its path via SMALLYMOUSE2_BOOTLOADER_HEX.
-set(BOOTLOADER_HEX "" CACHE FILEPATH "DFU bootloader image (Intel HEX)")
-if(DEFINED ENV{SMALLYMOUSE2_BOOTLOADER_HEX})
-    set(BOOTLOADER_HEX $ENV{SMALLYMOUSE2_BOOTLOADER_HEX})
-endif()
-
 if(AVRDUDE)
-    # Atmel-ICE over JTAG. Note that the chip erase this performs also removes
-    # the factory DFU bootloader.
-    add_custom_target(flash-jtag
-        COMMAND ${AVRDUDE} -c ${AVRDUDE_PROGRAMMER} -P ${AVRDUDE_PORT} -p ${AVRDUDE_PART}
-                -U flash:w:${FW_HEX}:i
-        DEPENDS SmallyMouse2
-        USES_TERMINAL
-        VERBATIM
-    )
+    # Atmel-ICE over JTAG. The chip erase this performs also removes the DFU
+    # bootloader, so the bootloader is written back together with the firmware.
+    if(BOOTLOADER_HEX)
+        add_custom_target(flash-jtag
+            COMMAND ${AVRDUDE} -c ${AVRDUDE_PROGRAMMER} -P ${AVRDUDE_PORT} -p ${AVRDUDE_PART}
+                    -U flash:w:${FW_BL_HEX}:i
+            DEPENDS firmware-with-bootloader
+            USES_TERMINAL
+            VERBATIM
+        )
+    else()
+        message(STATUS "BOOTLOADER_HEX not set: flash-jtag will erase the DFU bootloader")
+        add_custom_target(flash-jtag
+            COMMAND ${AVRDUDE} -c ${AVRDUDE_PROGRAMMER} -P ${AVRDUDE_PORT} -p ${AVRDUDE_PART}
+                    -U flash:w:${FW_HEX}:i
+            DEPENDS SmallyMouse2
+            USES_TERMINAL
+            VERBATIM
+        )
+    endif()
     add_custom_target(read-fuses-jtag
         COMMAND ${AVRDUDE} -c ${AVRDUDE_PROGRAMMER} -P ${AVRDUDE_PORT} -p ${AVRDUDE_PART}
                 -U lfuse:r:-:h -U hfuse:r:-:h -U efuse:r:-:h -U lock:r:-:h

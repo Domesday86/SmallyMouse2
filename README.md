@@ -27,6 +27,7 @@ The output is written to `build/release/`:
 | File                | Use                                                                 |
 |---------------------|---------------------------------------------------------------------|
 | `SmallyMouse2.hex`  | Flash image (Intel HEX) - JTAG via avrdude, DFU via dfu-programmer  |
+| `SmallyMouse2-with-bootloader.hex` | Firmware merged with the LUFA DFU bootloader - JTAG via avrdude |
 | `SmallyMouse2.elf`  | Full image with symbols - JTAG via Microchip Studio / debugging     |
 | `SmallyMouse2.eep`  | EEPROM image (currently empty)                                      |
 | `SmallyMouse2.srec` | Flash image (Motorola S-record)                                     |
@@ -45,11 +46,11 @@ Connect the Atmel-ICE to the JTAG header, then:
 
 or, without a build tree, `nix run .#flash-jtag`. The fuses and lock bits can be read with the `read-fuses-jtag` target.
 
-Note: programming over JTAG performs a chip erase, which also erases the factory DFU bootloader. After this the board can only be programmed over JTAG until the bootloader is restored.
+Programming over JTAG performs a chip erase, which also removes the DFU bootloader, so `flash-jtag` writes `SmallyMouse2-with-bootloader.hex` (the firmware merged with the LUFA DFU bootloader) and the board can still be updated over USB afterwards. The bootloader image comes from the Nix flake; without it (`BOOTLOADER_HEX` unset) `flash-jtag` writes the firmware alone and the bootloader is lost.
 
-### Restoring the DFU bootloader (Atmel-ICE)
+### Restoring the DFU bootloader and fuses (Atmel-ICE)
 
-To put a DFU bootloader back after a JTAG chip erase, connect the Atmel-ICE and run:
+If the bootloader is missing (for example after programming with another tool) or the fuses no longer select it, connect the Atmel-ICE and run:
 
     nix run .#flash-bootloader-jtag
 

@@ -50,6 +50,7 @@
           cmakeFlags = [
             "-DCMAKE_TOOLCHAIN_FILE=cmake/avr-gcc.cmake"
             "-DFETCHCONTENT_SOURCE_DIR_LUFA=${lufa}"
+            "-DBOOTLOADER_HEX=${bootloader}/BootloaderDFU.hex"
           ];
 
           dontFixup = true;
@@ -95,9 +96,10 @@
           };
         in
         {
-          # Atmel-ICE over JTAG. The chip erase also removes the factory DFU bootloader.
+          # Atmel-ICE over JTAG. The chip erase also removes the DFU bootloader, so
+          # the firmware is written merged with the LUFA DFU bootloader.
           flash-jtag = mkApp "smallymouse2-flash-jtag" [ pkgs.avrdude ] ''
-            avrdude -c atmelice -P usb -p usb1287 -U flash:w:${firmware}/SmallyMouse2.hex:i "$@"
+            avrdude -c atmelice -P usb -p usb1287 -U flash:w:${firmware}/SmallyMouse2-with-bootloader.hex:i "$@"
           '';
 
           # Restore a DFU bootloader over JTAG: chip erase, write the bootloader and
