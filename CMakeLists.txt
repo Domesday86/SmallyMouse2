@@ -57,9 +57,9 @@ set(LUFA_DIR ${lufa_SOURCE_DIR}/LUFA)
 add_executable(SmallyMouse2
     ${FW_DIR}/main.c
     ${FW_DIR}/ConfigDescriptor.c
+    ${FW_DIR}/serial.c
 
     # LUFA (host mode only, see src/config/LUFAConfig.h)
-    ${LUFA_DIR}/Drivers/Peripheral/AVR8/Serial_AVR8.c
     ${LUFA_DIR}/Drivers/USB/Core/AVR8/Host_AVR8.c
     ${LUFA_DIR}/Drivers/USB/Core/AVR8/Pipe_AVR8.c
     ${LUFA_DIR}/Drivers/USB/Core/AVR8/PipeStream_AVR8.c

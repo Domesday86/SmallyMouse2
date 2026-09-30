@@ -19,6 +19,7 @@
 #include <avr/power.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include <util/delay.h>
 #include <util/atomic.h>
@@ -37,10 +38,49 @@
 #include <LUFA/Platform/Platform.h>
 
 #include "ConfigDescriptor.h"
+#include "serial.h"
 #include "main.h"
 
 #define MOUSEX	0
 #define MOUSEY	1
+
+// USB mouse report button bits used for the quadrature mouse buttons
+#define BUTTON_LEFT		0x01
+#define BUTTON_RIGHT	0x02
+#define BUTTON_MIDDLE	0x04
+
+// Button mapping exceptions
+//
+// Some USB mice report their buttons on unexpected report bits (for example a trackball
+// where the two buttons reported as left and right are both on the same side of the ball).
+// Mice listed here (identified by their USB VID:PID) have their report button bits remapped
+// before they are output.
+//
+// buttonMap gives, for each report bit (0-7), the report bit it is output as.  The quadrature
+// mouse buttons are output from bit 0 (left), bit 1 (right) and bit 2 (middle).  More than one
+// report bit can be mapped to the same output bit.  An unlisted mouse uses the report bits
+// as they are.
+//
+// The debug console shows the VID:PID when a mouse is attached and the report bits of any
+// pressed buttons.
+typedef struct {
+	uint16_t vendorId;
+	uint16_t productId;
+	uint8_t buttonMap[8];
+} ButtonMapping_t;
+
+// The following button mapping exceptions are only for the wired and wireless Kensington expert mice.
+// The reason is Domesday AIV systems RB2 trackballs have a odd layout and these devices are used as
+// replacements.  Remapping is based on VID:PID, so other mice will be unaffected.
+static const ButtonMapping_t buttonMappings[] PROGMEM = {
+	// Kensington Expert Mouse: bit 0 is output as right, bits 1 and 2 as left and bit 3 as middle
+	{ 0x047D, 0x1020, { 1, 0, 0, 2, 4, 5, 6, 7 } },
+	// Kensington Expert Mouse Wireless: as the wired version
+	{ 0x047D, 0x8018, { 1, 0, 0, 2, 4, 5, 6, 7 } },
+};
+
+// Button mapping for the attached mouse (set on enumeration)
+uint8_t buttonMap[8] = { 0, 1, 2, 3, 4, 5, 6, 7 };
 
 // Configuration ------------------------------------------------------------------------------------------------------
 
@@ -106,6 +146,13 @@
 // divide the DPI rate to slow things down.  2 or 3 are reasonable values.
 #define DPI_DIVIDER 2
 
+// Button debug output
+//
+// Uncomment the following to show the USB mouse report button state on the debug console
+// whenever it changes (each pressed button's report bit and the quadrature mouse button it
+// is output as).  This is useful for working out the button mapping exception for a mouse.
+//#define DEBUG_BUTTONS
+
 // Quadrature output timer ---------------------------------------------------------------------------------------------
 
 // Timer1 (X) and Timer3 (Y) are 16-bit timers clocked at F_CPU / 8 (0.5 uS per tick at 16 MHz).
@@ -155,6 +202,11 @@
 #define Q_RATELIMIT_BUFFERLIMIT Q_BUFFERLIMIT
 #else
 #define Q_RATELIMIT_BUFFERLIMIT Q_RATELIMIT_DRAINUNITS
+#endif
+
+#ifdef DEBUG_BUTTONS
+// Last USB mouse report button state (used to report button changes on the debug console)
+uint8_t previousButtons = 0;
 #endif
 
 // Interrupt Service Routines for quadrature output -------------------------------------------------------------------
@@ -341,13 +393,11 @@ void initialiseHardware(void)
 	// AVR's UART port.  You can monitor the debug console by connecting
 	// a serial to USB adapter.  Only the Tx (D3 and 0V pins are required).
 	
-	// Initialise the serial UART - 9600 baud 8N1
-	Serial_Init(9600, false);
-
-	// Create a serial debug stream on stdio
-	// Note: The serial UART is available on the 
+	// Initialise the interrupt driven serial UART - 9600 baud 8N1 - and
+	// direct stdout to it
+	// Note: The serial UART is available on the
 	// expansion (Ian) header
-	Serial_CreateStream(NULL);
+	serialInit(9600);
 
 	// Output some debug header information to the serial console
 	puts_P(PSTR(ESC_FG_YELLOW "SmallyMouse2 V1.4 - Serial debug console\r\n" ESC_FG_WHITE));
@@ -509,8 +559,11 @@ void processMouse(void)
 		
 		// Process mouse buttons ----------------------------------------------
 		
+		// Apply any button mapping for the attached mouse
+		uint8_t buttons = mapButtons(MouseReport.Button);
+		
 		// Check for left mouse button
-		if ((MouseReport.Button & 0x01) == 0) {
+		if ((buttons & BUTTON_LEFT) == 0) {
 			// Open-drain
 			LB_PORT &= ~LB;
 			LB_DDR &= ~LB;
@@ -521,7 +574,7 @@ void processMouse(void)
 		}
 			
 		// Check for middle mouse button
-		if ((MouseReport.Button & 0x04) == 0) {
+		if ((buttons & BUTTON_MIDDLE) == 0) {
 			// Open-drain
 			MB_PORT &= ~MB;
 			MB_DDR &= ~MB;
@@ -532,7 +585,7 @@ void processMouse(void)
 		}
 			
 		// Check for right mouse button
-		if ((MouseReport.Button & 0x02) == 0) {
+		if ((buttons & BUTTON_RIGHT) == 0) {
 			// Open-drain
 			RB_PORT &= ~RB;
 			RB_DDR &= ~RB;
@@ -544,6 +597,15 @@ void processMouse(void)
 		
 		// Clear USB report processing activity on expansion port pin D0
 		E0_PORT &= ~E0; // Pin = 0
+
+#ifdef DEBUG_BUTTONS
+		// Report any button change on the debug console (the serial output is
+		// buffered, so this only blocks if the transmit buffer is full)
+		if (MouseReport.Button != previousButtons) {
+			reportButtons(MouseReport.Button);
+			previousButtons = MouseReport.Button;
+		}
+#endif
 	}
 
 	// Clear the IN endpoint, ready for next data packet
@@ -552,6 +614,66 @@ void processMouse(void)
 	// Refreeze mouse data pipe
 	Pipe_Freeze();
 }
+
+// Map the USB mouse report button bits using the attached mouse's button mapping
+uint8_t mapButtons(uint8_t buttons)
+{
+	uint8_t mapped = 0;
+
+	for (uint8_t bit = 0; bit < 8; bit++) {
+		if (buttons & (1 << bit)) mapped |= (1 << buttonMap[bit]);
+	}
+
+	return mapped;
+}
+
+// Set the button mapping for the attached mouse from the button mapping exceptions
+void setButtonMapping(uint16_t vendorId, uint16_t productId)
+{
+	// Default to the report bits as they are
+	for (uint8_t bit = 0; bit < 8; bit++) buttonMap[bit] = bit;
+
+	for (uint8_t i = 0; i < (sizeof(buttonMappings) / sizeof(buttonMappings[0])); i++) {
+		if ((pgm_read_word(&buttonMappings[i].vendorId) == vendorId) &&
+			(pgm_read_word(&buttonMappings[i].productId) == productId)) {
+			memcpy_P(buttonMap, buttonMappings[i].buttonMap, sizeof(buttonMap));
+			printf_P(PSTR("Using button mapping exception for this device\r\n"));
+			return;
+		}
+	}
+}
+
+#ifdef DEBUG_BUTTONS
+// Output the USB mouse report button state to the debug console
+//
+// Each pressed button is shown as its report bit number followed by the quadrature
+// mouse button it is output as (after any button mapping), for example:
+//
+//   Buttons 0x05: 0=Left 2=Middle
+//   Buttons 0x08: 3=Unmapped
+//   Buttons 0x00: Released
+void reportButtons(uint8_t buttons)
+{
+	printf_P(PSTR("Buttons 0x%02X:"), buttons);
+
+	if (buttons == 0) {
+		printf_P(PSTR(" Released\r\n"));
+		return;
+	}
+
+	for (uint8_t bit = 0; bit < 8; bit++) {
+		if ((buttons & (1 << bit)) == 0) continue;
+
+		uint8_t mask = (1 << buttonMap[bit]);
+		if (mask == BUTTON_LEFT) printf_P(PSTR(" %d=Left"), bit);
+		else if (mask == BUTTON_MIDDLE) printf_P(PSTR(" %d=Middle"), bit);
+		else if (mask == BUTTON_RIGHT) printf_P(PSTR(" %d=Right"), bit);
+		else printf_P(PSTR(" %d=Unmapped"), bit);
+	}
+
+	printf_P(PSTR("\r\n"));
+}
+#endif
 
 // Start the quadrature output ISRs if they are stopped and there is movement to output
 //
@@ -696,6 +818,20 @@ void EVENT_USB_Host_DeviceEnumerationComplete(void)
 
 	uint8_t ErrorCode;
 
+	// Get the device descriptor, report the device's VID/PID and select any button
+	// mapping exception for it.  A failure here is not fatal (the default button
+	// mapping is used).
+	USB_Descriptor_Device_t DeviceDescriptor;
+	if ((ErrorCode = USB_Host_GetDeviceDescriptor(&DeviceDescriptor)) == HOST_SENDCONTROL_Successful) {
+		printf_P(PSTR("Device VID:PID = %04X:%04X (release %04X)\r\n"),
+			DeviceDescriptor.VendorID, DeviceDescriptor.ProductID, DeviceDescriptor.ReleaseNumber);
+		setButtonMapping(DeviceDescriptor.VendorID, DeviceDescriptor.ProductID);
+	} else {
+		printf_P(PSTR(ESC_FG_RED "Control Error (Get device descriptor)!\r\n"
+		                         " -- Error Code: %d\r\n" ESC_FG_WHITE), ErrorCode);
+		setButtonMapping(0, 0);
+	}
+
 	/* Get and process the configuration descriptor data */
 	if ((ErrorCode = ProcessConfigurationDescriptor()) != SuccessfulConfigRead) {
 		if (ErrorCode == ControlError) {
@@ -735,6 +871,11 @@ void EVENT_USB_Host_DeviceEnumerationComplete(void)
 		USB_Host_SetDeviceConfiguration(0);
 		return;
 	}
+
+#ifdef DEBUG_BUTTONS
+	// A newly attached mouse starts with no buttons pressed
+	previousButtons = 0;
+#endif
 
 	puts_P(PSTR("USB Mouse enumeration successful\r\n"));
 }
