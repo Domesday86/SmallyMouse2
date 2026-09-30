@@ -6,7 +6,7 @@
 // are simple blocks at their nominal (datasheet-typical) sizes.
 //
 // Board coordinates (used by everything in this file and by case.scad):
-//   origin  - lower-left corner of the board outline, bottom face of the PCB
+//   origin  - centre of the board outline, on the bottom face of the PCB
 //   X       - right, along the 52.3 mm edge
 //   Y       - up the board, as seen in KiCad's top view
 //   Z       - up from the bottom face; the top (component) face is at
@@ -28,7 +28,7 @@ $fs = 0.25;
 // Board
 
 // Edge.Cuts rectangle: (120.904, 80.264) - (173.228, 122.428) in KiCad
-PCB_KICAD_ORIGIN = [120.904, 122.428];  // KiCad position of the board origin
+PCB_KICAD_ORIGIN = [147.066, 101.346];  // KiCad position of the board centre
 PCB_SIZE = [52.324, 42.164];
 PCB_THICKNESS = 1.6;
 
@@ -265,7 +265,7 @@ module _part(part) {
 module pcb_board() {
     usb = pcb_part("P1");
     color(PCB_COLOUR) difference() {
-        cube([PCB_SIZE.x, PCB_SIZE.y, PCB_THICKNESS]);
+        cuboid([PCB_SIZE.x, PCB_SIZE.y, PCB_THICKNESS], anchor = BOT);
         for (h = PCB_HOLES) translate(h) cyl(d = PCB_HOLE_D, h = 10);
         for (x = [-6.57, 6.57]) translate(fp_xy(usb[2], usb[3], [x, 2.14]))
             cyl(d = 2.3, h = 10);

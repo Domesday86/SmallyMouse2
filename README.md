@@ -100,12 +100,33 @@ On either system, unplug and replug the device after adding the rules.
 | `pcb.scad`  | Dimensional model of the assembled board, built from the footprint placements in `KiCAD/SmallyMouse2.kicad_pcb`, with helpers giving the board-space position of any part by reference (for example `pcb_part_box("P1")` for the USB connector) |
 | `case.scad` | Two-part case (base and lid) positioned against the board model                   |
 
-The `openscad` dev shell provides OpenSCAD and sets `OPENSCADPATH` so `include <BOSL2/std.scad>` resolves to the pinned BOSL2:
+### Opening the design
+
+From the repository root, enter the `openscad` dev shell and open the case:
 
     nix develop .#openscad
     openscad Case/case.scad
 
-Set `part` in the Customizer (or with `-D 'part="lid"'` on the command line) to show the assembly, base, lid or board alone. `nix build .#case` renders `case-base.stl`, `case-lid.stl` and `case-pcb.stl` into `./result/`.
+Start OpenSCAD from inside the dev shell: the shell sets `OPENSCADPATH` to the pinned BOSL2, so `include <BOSL2/std.scad>` fails if OpenSCAD is started any other way (for example from the desktop menu). `openscad Case/pcb.scad` opens the board model on its own.
+
+Open the Customizer (Window → Customizer) and set `part` to choose what is shown:
+
+| `part`     | Shows                                                                    |
+|------------|--------------------------------------------------------------------------|
+| `assembly` | Base, board and a transparent lid together; raise `explode` to lift the lid |
+| `base`     | The base alone, laid out for printing                                    |
+| `lid`      | The lid alone, turned over for printing                                  |
+| `pcb`      | The board alone                                                          |
+
+The case dimensions (wall thickness, clearances, standoff height and so on) are in the same panel.
+
+F5 gives a fast preview; F6 does the full render needed before exporting an STL with F7.
+
+### Exporting STLs
+
+Without the GUI, `nix build .#case` renders `case-base.stl`, `case-lid.stl` and `case-pcb.stl` into `./result/`. A single part can be exported from the dev shell with, for example:
+
+    openscad -o case-lid.stl -D 'part="lid"' Case/case.scad
 
 Component heights that are not in the KiCad data (the USB connector, IDC header and pin headers) use typical datasheet values, set near the top of `pcb.scad`; check them against the parts fitted before printing.
 
