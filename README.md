@@ -2,6 +2,8 @@
 
 SmallyMouse2 is the AT90USB1287 firmware source code and KiCAD schematic/PCB design for the SmallyMouse2 project.
 
+Detailed documentation is available on the [SmallyMouse2 wiki](https://github.com/domesday86/SmallyMouse2/wiki).
+
 The schematic and PCB design in `KiCAD/` are in the KiCad 10 file format and require KiCad 10 or later to open. The original KiCad 4 files are available in the git history (commit `66cf90d` and earlier).
 
 ## Motivation
@@ -16,9 +18,9 @@ The firmware is built with the open-source AVR GNU toolchain (avr-gcc, avr-binut
 
 ### Building
 
-Enter the development shell and build out-of-tree using a CMake preset:
+Enter the firmware development shell (`code`, also the default) and build out-of-tree using a CMake preset:
 
-    nix develop
+    nix develop                     # or: nix develop .#code
     cmake --preset release          # or: cmake --preset debug
     cmake --build --preset release
 
@@ -91,7 +93,44 @@ On other distributions, put the same three lines in a file such as `/etc/udev/ru
 
 On either system, unplug and replug the device after adding the rules.
 
-Please see http://www.waitingforfriday.com/?p=827 for detailed documentation about SmallyMouse2
+## Case
+
+`Case/` holds an OpenSCAD case design, built with the [BOSL2](https://github.com/BelfrySCAD/BOSL2) library:
+
+| File        | Contents                                                                           |
+|-------------|------------------------------------------------------------------------------------|
+| `pcb.scad`  | Dimensional model of the assembled board, built from the footprint placements in `KiCAD/SmallyMouse2.kicad_pcb`, with helpers giving the board-space position of any part by reference (for example `pcb_part_box("P1")` for the USB connector) |
+| `case.scad` | Two-part case (base and lid) positioned against the board model                   |
+
+### Opening the design
+
+From the repository root, enter the `openscad` dev shell and open the case:
+
+    nix develop .#openscad
+    openscad Case/case.scad
+
+Start OpenSCAD from inside the dev shell: the shell sets `OPENSCADPATH` to the pinned BOSL2, so `include <BOSL2/std.scad>` fails if OpenSCAD is started any other way (for example from the desktop menu). `openscad Case/pcb.scad` opens the board model on its own.
+
+Open the Customizer (Window → Customizer) and set `part` to choose what is shown:
+
+| `part`     | Shows                                                                    |
+|------------|--------------------------------------------------------------------------|
+| `assembly` | Base, board and a transparent lid together; raise `explode` to lift the lid |
+| `base`     | The base alone, laid out for printing                                    |
+| `lid`      | The lid alone, turned over for printing                                  |
+| `pcb`      | The board alone                                                          |
+
+The case dimensions (wall thickness, clearances, standoff height and so on) are in the same panel.
+
+F5 gives a fast preview; F6 does the full render needed before exporting an STL with F7.
+
+### Exporting STLs
+
+Without the GUI, `nix build .#case` renders `case-base.stl`, `case-lid.stl` and `case-pcb.stl` into `./result/`. A single part can be exported from the dev shell with, for example:
+
+    openscad -o case-lid.stl -D 'part="lid"' Case/case.scad
+
+Component heights that are not in the KiCad data (the USB connector, IDC header and pin headers) use typical datasheet values, set near the top of `pcb.scad`; check them against the parts fitted before printing.
 
 ## Author
 

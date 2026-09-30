@@ -7,3 +7,7 @@
 
 # direnv
 /.direnv/
+
+# OpenSCAD exports (nix build .#case renders these into ./result)
+/Case/*.stl
+/Case/*.3mf
