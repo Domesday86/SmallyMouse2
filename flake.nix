@@ -3,9 +3,16 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+
+    # LUFA USB stack (no flake of its own). Keep the rev in step with the
+    # FetchContent fallback in CMakeLists.txt.
+    lufa = {
+      url = "github:abcminiuser/lufa/90d65ba059d91078a34b9c26c8772ee14b556a13";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs }:
+  outputs = { self, nixpkgs, lufa }:
     let
       systems = [ "x86_64-linux" "aarch64-linux" ];
       forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f nixpkgs.legacyPackages.${system});
@@ -40,7 +47,10 @@
 
           nativeBuildInputs = [ pkgs.cmake pkgs.ninja ] ++ avrToolchain pkgs;
 
-          cmakeFlags = [ "-DCMAKE_TOOLCHAIN_FILE=cmake/avr-gcc.cmake" ];
+          cmakeFlags = [
+            "-DCMAKE_TOOLCHAIN_FILE=cmake/avr-gcc.cmake"
+            "-DFETCHCONTENT_SOURCE_DIR_LUFA=${lufa}"
+          ];
 
           dontFixup = true;
         };
@@ -72,6 +82,7 @@
       devShells = forAllSystems (pkgs: {
         default = pkgs.mkShellNoCC {
           packages = [ pkgs.cmake pkgs.ninja ] ++ avrToolchain pkgs ++ programmers pkgs;
+          LUFA_SOURCE_DIR = "${lufa}";
         };
       });
     };

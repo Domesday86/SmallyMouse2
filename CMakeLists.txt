@@ -30,8 +30,29 @@ set(AVRDUDE_PORT       usb      CACHE STRING "avrdude -P port")
 # Firmware
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# LUFA
+#   The nix flake pins LUFA as an input and passes its store path via the
+#   LUFA_SOURCE_DIR environment variable (or FETCHCONTENT_SOURCE_DIR_LUFA);
+#   otherwise the same revision is fetched from GitHub at configure time.
+# ---------------------------------------------------------------------------
+
+include(FetchContent)
+
+if(NOT FETCHCONTENT_SOURCE_DIR_LUFA AND DEFINED ENV{LUFA_SOURCE_DIR})
+    set(FETCHCONTENT_SOURCE_DIR_LUFA $ENV{LUFA_SOURCE_DIR})
+endif()
+
+# Keep in step with the lufa input in flake.lock
+FetchContent_Declare(lufa
+    GIT_REPOSITORY https://github.com/abcminiuser/lufa.git
+    GIT_TAG        90d65ba059d91078a34b9c26c8772ee14b556a13 # LUFA-210130 + upstream fixes
+    GIT_SHALLOW    FALSE
+)
+FetchContent_MakeAvailable(lufa)
+
 set(FW_DIR   ${CMAKE_CURRENT_SOURCE_DIR}/SmallyMouse2)
-set(LUFA_DIR ${FW_DIR}/src/LUFA/LUFA)
+set(LUFA_DIR ${lufa_SOURCE_DIR}/LUFA)
 
 add_executable(SmallyMouse2
     ${FW_DIR}/main.c
@@ -58,7 +79,7 @@ set_target_properties(SmallyMouse2 PROPERTIES
 
 target_include_directories(SmallyMouse2 PRIVATE
     ${FW_DIR}/src
-    ${FW_DIR}/src/LUFA
+    ${lufa_SOURCE_DIR}
     ${FW_DIR}/src/config
 )
 
@@ -96,7 +117,7 @@ target_link_options(SmallyMouse2 PRIVATE
 target_link_libraries(SmallyMouse2 PRIVATE m)
 
 # LUFA's weak event stubs alias functions of differing signatures, which newer
-# GCC flags; the aliasing is intentional and the vendored LUFA is left as-is.
+# GCC flags; the aliasing is intentional and upstream LUFA is left as-is.
 set_source_files_properties(${LUFA_DIR}/Drivers/USB/Core/Events.c PROPERTIES
     COMPILE_OPTIONS "-Wno-attributes;-Wno-missing-attributes;-Wno-attribute-alias"
 )
