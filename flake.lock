@@ -1,5 +1,22 @@
 {
   "nodes": {
+    "bosl2": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1790690434,
+        "narHash": "sha256-447OL1419MSJDlAgNwSDVLGl59r01uUFy06Bn0ztQ3A=",
+        "owner": "BelfrySCAD",
+        "repo": "BOSL2",
+        "rev": "402be424319c2ed1bd8c11f29a71fe22b16b06b2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "BelfrySCAD",
+        "ref": "v2.0.763",
+        "repo": "BOSL2",
+        "type": "github"
+      }
+    },
     "lufa": {
       "flake": false,
       "locked": {
@@ -35,6 +52,7 @@
     },
     "root": {
       "inputs": {
+        "bosl2": "bosl2",
         "lufa": "lufa",
         "nixpkgs": "nixpkgs"
       }

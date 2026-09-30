@@ -175,7 +175,7 @@
 		(uuid "e553e07a-13b7-4f01-a258-c7c979b42bd7")
 	)
 	(embedded_fonts no)
-	(model "${KISYS3DMOD}/Resistors_SMD.3dshapes/R_0805.wrl"
+	(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0805_2012Metric.stpZ"
 		(offset
 			(xyz 0 0 0)
 		)

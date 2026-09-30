@@ -224,4 +224,15 @@
 		(uuid "8126b5ce-8563-4098-8728-889555327043")
 	)
 	(embedded_fonts no)
+	(model "${KICAD10_3DMODEL_DIR}/Connector_USB.3dshapes/USB_A_TE_292303-7_Horizontal.stpZ"
+		(offset
+			(xyz 0 -4.84 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
 )

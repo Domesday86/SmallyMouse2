@@ -16,9 +16,9 @@ The firmware is built with the open-source AVR GNU toolchain (avr-gcc, avr-binut
 
 ### Building
 
-Enter the development shell and build out-of-tree using a CMake preset:
+Enter the firmware development shell (`code`, also the default) and build out-of-tree using a CMake preset:
 
-    nix develop
+    nix develop                     # or: nix develop .#code
     cmake --preset release          # or: cmake --preset debug
     cmake --build --preset release
 
@@ -90,6 +90,24 @@ services.udev.extraRules = ''
 On other distributions, put the same three lines in a file such as `/etc/udev/rules.d/70-smallymouse2.rules`. Make sure your user is in the group the rules name, or change `GROUP` to one it is in (for example `plugdev` on Debian and Ubuntu). Then reload the rules with `sudo udevadm control --reload-rules`.
 
 On either system, unplug and replug the device after adding the rules.
+
+## Case
+
+`Case/` holds an OpenSCAD case design, built with the [BOSL2](https://github.com/BelfrySCAD/BOSL2) library:
+
+| File        | Contents                                                                           |
+|-------------|------------------------------------------------------------------------------------|
+| `pcb.scad`  | Dimensional model of the assembled board, built from the footprint placements in `KiCAD/SmallyMouse2.kicad_pcb`, with helpers giving the board-space position of any part by reference (for example `pcb_part_box("P1")` for the USB connector) |
+| `case.scad` | Two-part case (base and lid) positioned against the board model                   |
+
+The `openscad` dev shell provides OpenSCAD and sets `OPENSCADPATH` so `include <BOSL2/std.scad>` resolves to the pinned BOSL2:
+
+    nix develop .#openscad
+    openscad Case/case.scad
+
+Set `part` in the Customizer (or with `-D 'part="lid"'` on the command line) to show the assembly, base, lid or board alone. `nix build .#case` renders `case-base.stl`, `case-lid.stl` and `case-pcb.stl` into `./result/`.
+
+Component heights that are not in the KiCad data (the USB connector, IDC header and pin headers) use typical datasheet values, set near the top of `pcb.scad`; check them against the parts fitted before printing.
 
 Please see http://www.waitingforfriday.com/?p=827 for detailed documentation about SmallyMouse2
 

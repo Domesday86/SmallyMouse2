@@ -10,9 +10,15 @@
       url = "github:abcminiuser/lufa/90d65ba059d91078a34b9c26c8772ee14b556a13";
       flake = false;
     };
+
+    # BOSL2 OpenSCAD library for the case design in Case/ (not in nixpkgs).
+    bosl2 = {
+      url = "github:BelfrySCAD/BOSL2/v2.0.763";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, lufa }:
+  outputs = { self, nixpkgs, lufa, bosl2 }:
     let
       systems = [ "x86_64-linux" "aarch64-linux" ];
       forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f nixpkgs.legacyPackages.${system});
@@ -28,6 +34,14 @@
       programmers = pkgs: [
         pkgs.avrdude
         pkgs.dfu-programmer
+      ];
+
+      # OpenSCAD (development snapshot, for the much faster Manifold backend)
+      # and a library directory for OPENSCADPATH, so the case sources can
+      # `include <BOSL2/std.scad>`.
+      openscadPackage = pkgs: pkgs.openscad-unstable;
+      openscadPath = pkgs: pkgs.linkFarm "openscad-libraries" [
+        { name = "BOSL2"; path = bosl2; }
       ];
     in
     {
@@ -84,6 +98,34 @@
           dontFixup = true;
         };
 
+        # Printable STL files for the case, and the PCB model for reference.
+        case = pkgs.stdenvNoCC.mkDerivation {
+          pname = "smallymouse2-case";
+          version = self.shortRev or self.dirtyShortRev or "dev";
+
+          src = ./Case;
+
+          nativeBuildInputs = [ (openscadPackage pkgs) ];
+
+          OPENSCADPATH = openscadPath pkgs;
+
+          buildPhase = ''
+            runHook preBuild
+            for part in base lid pcb; do
+              openscad --backend=manifold -o "case-$part.stl" -D "part=\"$part\"" case.scad
+            done
+            runHook postBuild
+          '';
+
+          installPhase = ''
+            runHook preInstall
+            install -Dm644 -t $out case-*.stl
+            runHook postInstall
+          '';
+
+          dontFixup = true;
+        };
+
         default = firmware;
       });
 
@@ -119,12 +161,21 @@
           '';
         });
 
-      devShells = forAllSystems (pkgs: {
-        default = pkgs.mkShellNoCC {
+      devShells = forAllSystems (pkgs: rec {
+        # Firmware: AVR toolchain, CMake and the programmers.
+        code = pkgs.mkShellNoCC {
           packages = [ pkgs.cmake pkgs.ninja ] ++ avrToolchain pkgs ++ programmers pkgs;
           LUFA_SOURCE_DIR = "${lufa}";
           SMALLYMOUSE2_BOOTLOADER_HEX = "${self.packages.${pkgs.stdenv.hostPlatform.system}.bootloader}/BootloaderDFU.hex";
         };
+
+        # Case design: OpenSCAD with BOSL2 on OPENSCADPATH.
+        openscad = pkgs.mkShellNoCC {
+          packages = [ (openscadPackage pkgs) ];
+          OPENSCADPATH = "${openscadPath pkgs}";
+        };
+
+        default = code;
       });
     };
 }

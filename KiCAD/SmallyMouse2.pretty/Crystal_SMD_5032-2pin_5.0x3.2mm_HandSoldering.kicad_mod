@@ -279,12 +279,12 @@
 		(uuid "ba25a031-bf94-4475-a292-35acecad4e20")
 	)
 	(embedded_fonts no)
-	(model "${KISYS3DMOD}/Crystals.3dshapes/Crystal_SMD_5032-2pin_5.0x3.2mm_HandSoldering.wrl"
+	(model "${KICAD10_3DMODEL_DIR}/Crystal.3dshapes/Crystal_SMD_5032-2Pin_5.0x3.2mm.stpZ"
 		(offset
 			(xyz 0 0 0)
 		)
 		(scale
-			(xyz 0.393701 0.393701 0.393701)
+			(xyz 1 1 1)
 		)
 		(rotate
 			(xyz 0 0 0)

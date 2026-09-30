@@ -221,15 +221,15 @@
 		(uuid "bf307c4f-645c-4bca-8cac-100aee4dc8da")
 	)
 	(embedded_fonts no)
-	(model "${KISYS3DMOD}/Pin_Headers.3dshapes/Pin_Header_Straight_1x02_Pitch2.54mm.wrl"
+	(model "${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x02_P2.54mm_Vertical.stpZ"
 		(offset
-			(xyz 0 -1.269999981 0)
+			(xyz 0 0 0)
 		)
 		(scale
 			(xyz 1 1 1)
 		)
 		(rotate
-			(xyz 0 0 90)
+			(xyz 0 0 0)
 		)
 	)
 )
