@@ -56,6 +56,9 @@
 			NoCompatibleInterfaceFound      = 4, /**< A compatible interface with the required endpoints was not found */
 		};
 
+	/* External Variables: */
+		extern uint8_t MouseInterfaceNumber;
+
 	/* Function Prototypes: */
 		uint8_t ProcessConfigurationDescriptor(void);
 

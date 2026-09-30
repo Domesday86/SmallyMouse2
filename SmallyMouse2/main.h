@@ -105,7 +105,8 @@
 void initialiseHardware(void);
 void initialiseTimers(void);
 void processMouse(void);
-uint8_t processMouseMovement(int8_t movementUnits, uint8_t axis, bool limitRate, bool dpiDivide);
+void startQuadratureTimers(void);
+uint16_t processMouseMovement(int8_t movementUnits, uint8_t axis, bool limitRate, bool dpiDivide);
 
 // USB callback event handlers (LUFA)
 void EVENT_USB_Host_HostError(const uint8_t ErrorCode);
