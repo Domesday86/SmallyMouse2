@@ -130,7 +130,7 @@ Without the GUI, `nix build .#case` renders `case-base.stl`, `case-lid.stl` and 
 
 Component heights that are not in the KiCad data (the USB connector, IDC header and pin headers) use typical datasheet values, set near the top of `pcb.scad`; check them against the parts fitted before printing.
 
-Please see http://www.waitingforfriday.com/?p=827 for detailed documentation about SmallyMouse2
+Please see the [SmallyMouse2 wiki](https://github.com/domesday86/SmallyMouse2/wiki) for detailed documentation about SmallyMouse2
 
 ## Author
 
