@@ -1,0 +1,71 @@
+# Build the firmware with the pinned Nix toolchain on every push to master and
+# on every pull request. The build fails on any compiler warning, and on a
+# firmware image that would overlap the 8 KB DFU bootloader section.
+
+name: Firmware
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: cachix/install-nix-action@v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check flake
+        run: nix flake check --all-systems
+
+      # Both presets from the dev shell, with warnings treated as errors
+      - name: Build release and debug (-Werror)
+        run: |
+          nix develop --command bash -euo pipefail -c '
+            for preset in release debug; do
+              cmake --preset "$preset" -DCMAKE_C_FLAGS=-Werror
+              cmake --build --preset "$preset"
+            done
+          '
+
+      # The AT90USB1287 has 128 KB of flash; the top 8 KB is the boot section
+      - name: Check application fits below the bootloader
+        run: |
+          nix develop --command bash -euo pipefail -c '
+            limit=$(( (128 - 8) * 1024 ))
+            read -r text data _ < <(avr-size build/release/SmallyMouse2.elf | tail -n 1)
+            used=$(( text + data ))
+            echo "Application flash: $used of $limit bytes"
+            if (( used > limit )); then
+              echo "::error::Firmware ($used bytes) overlaps the bootloader section (limit $limit bytes)"
+              exit 1
+            fi
+          '
+
+      # The packaged build, including the image merged with the bootloader
+      - name: Build package
+        run: nix build -L .#firmware
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: SmallyMouse2-firmware-${{ github.sha }}
+          path: |
+            result/SmallyMouse2.hex
+            result/SmallyMouse2-with-bootloader.hex
+            result/SmallyMouse2.elf
+            result/SmallyMouse2.eep
+            result/SmallyMouse2.map
+          if-no-files-found: error
