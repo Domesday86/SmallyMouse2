@@ -54,12 +54,41 @@
 
           dontFixup = true;
         };
+
+        # LUFA DFU bootloader, a replacement for the factory Atmel (FLIP) one that
+        # a JTAG chip erase removes. It enumerates with the same USB ID (03eb:2ffb)
+        # so dfu-programmer and flash-dfu work unchanged.
+        bootloader = pkgs.stdenvNoCC.mkDerivation {
+          pname = "smallymouse2-bootloader";
+          version = "lufa-${lufa.shortRev or "unknown"}";
+
+          src = lufa;
+
+          nativeBuildInputs = avrToolchain pkgs;
+
+          buildPhase = ''
+            runHook preBuild
+            make -C Bootloaders/DFU hex \
+              MCU=at90usb1287 ARCH=AVR8 BOARD=NONE F_CPU=16000000 \
+              FLASH_SIZE_KB=128 BOOT_SECTION_SIZE_KB=8
+            runHook postBuild
+          '';
+
+          installPhase = ''
+            runHook preInstall
+            install -Dm644 Bootloaders/DFU/BootloaderDFU.hex $out/BootloaderDFU.hex
+            runHook postInstall
+          '';
+
+          dontFixup = true;
+        };
+
         default = firmware;
       });
 
       apps = forAllSystems (pkgs:
         let
-          firmware = self.packages.${pkgs.stdenv.hostPlatform.system}.firmware;
+          inherit (self.packages.${pkgs.stdenv.hostPlatform.system}) firmware bootloader;
           mkApp = name: runtimeInputs: text: {
             type = "app";
             program = nixpkgs.lib.getExe (pkgs.writeShellApplication { inherit name runtimeInputs text; });
@@ -69,6 +98,15 @@
           # Atmel-ICE over JTAG. The chip erase also removes the factory DFU bootloader.
           flash-jtag = mkApp "smallymouse2-flash-jtag" [ pkgs.avrdude ] ''
             avrdude -c atmelice -P usb -p usb1287 -U flash:w:${firmware}/SmallyMouse2.hex:i "$@"
+          '';
+
+          # Restore a DFU bootloader over JTAG: chip erase, write the bootloader and
+          # set the factory hfuse/efuse (8 KB boot section, BOOTRST unprogrammed,
+          # JTAG enabled, HWBE enabled) so the HWB jumper selects the bootloader.
+          flash-bootloader-jtag = mkApp "smallymouse2-flash-bootloader-jtag" [ pkgs.avrdude ] ''
+            avrdude -c atmelice -P usb -p usb1287 -e \
+              -U flash:w:${bootloader}/BootloaderDFU.hex:i \
+              -U hfuse:w:0x99:m -U efuse:w:0xF3:m "$@"
           '';
 
           # Factory Atmel (FLIP) DFU bootloader over USB.
@@ -83,6 +121,7 @@
         default = pkgs.mkShellNoCC {
           packages = [ pkgs.cmake pkgs.ninja ] ++ avrToolchain pkgs ++ programmers pkgs;
           LUFA_SOURCE_DIR = "${lufa}";
+          SMALLYMOUSE2_BOOTLOADER_HEX = "${self.packages.${pkgs.stdenv.hostPlatform.system}.bootloader}/BootloaderDFU.hex";
         };
       });
     };

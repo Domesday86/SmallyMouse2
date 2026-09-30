@@ -47,6 +47,14 @@ or, without a build tree, `nix run .#flash-jtag`. The fuses and lock bits can be
 
 Note: programming over JTAG performs a chip erase, which also erases the factory DFU bootloader. After this the board can only be programmed over JTAG until the bootloader is restored.
 
+### Restoring the DFU bootloader (Atmel-ICE)
+
+To put a DFU bootloader back after a JTAG chip erase, connect the Atmel-ICE and run:
+
+    nix run .#flash-bootloader-jtag
+
+or, from the dev shell, `cmake --build --preset release --target flash-bootloader-jtag`. This builds the LUFA DFU bootloader from the pinned LUFA source, erases the chip, writes the bootloader and sets the high/extended fuses to the factory values (`hfuse 0x99`, `efuse 0xF3`: 8 KB boot section, JTAG enabled, HWB bootloader entry enabled). The LUFA bootloader uses the same USB ID as the factory one, so the DFU steps below work unchanged. Any application firmware is removed; reprogram it over USB afterwards.
+
 ### Programming via USB (DFU bootloader)
 
 Put the AT90USB1287 into its factory DFU bootloader (hold HWB low while resetting), then:

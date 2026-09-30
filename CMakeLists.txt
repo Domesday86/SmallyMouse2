@@ -165,6 +165,13 @@ install(FILES ${FW_ELF} ${FW_HEX} ${FW_EEP} ${FW_SREC} ${FW_LSS}
 find_program(AVRDUDE avrdude)
 find_program(DFU_PROGRAMMER dfu-programmer)
 
+# DFU bootloader image for flash-bootloader-jtag; the nix dev shell builds it
+# from LUFA and passes its path via SMALLYMOUSE2_BOOTLOADER_HEX.
+set(BOOTLOADER_HEX "" CACHE FILEPATH "DFU bootloader image (Intel HEX)")
+if(DEFINED ENV{SMALLYMOUSE2_BOOTLOADER_HEX})
+    set(BOOTLOADER_HEX $ENV{SMALLYMOUSE2_BOOTLOADER_HEX})
+endif()
+
 if(AVRDUDE)
     # Atmel-ICE over JTAG. Note that the chip erase this performs also removes
     # the factory DFU bootloader.
@@ -181,6 +188,20 @@ if(AVRDUDE)
         USES_TERMINAL
         VERBATIM
     )
+    if(BOOTLOADER_HEX)
+        # Restore the DFU bootloader: chip erase, write the bootloader and set
+        # the factory hfuse/efuse (8 KB boot section, BOOTRST unprogrammed,
+        # JTAG enabled, HWBE enabled) so the HWB jumper selects the bootloader.
+        add_custom_target(flash-bootloader-jtag
+            COMMAND ${AVRDUDE} -c ${AVRDUDE_PROGRAMMER} -P ${AVRDUDE_PORT} -p ${AVRDUDE_PART} -e
+                    -U flash:w:${BOOTLOADER_HEX}:i
+                    -U hfuse:w:0x99:m -U efuse:w:0xF3:m
+            USES_TERMINAL
+            VERBATIM
+        )
+    else()
+        message(STATUS "BOOTLOADER_HEX not set: flash-bootloader-jtag target unavailable")
+    endif()
 else()
     message(STATUS "avrdude not found: flash-jtag target unavailable")
 endif()
