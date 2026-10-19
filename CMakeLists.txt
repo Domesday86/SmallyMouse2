@@ -54,7 +54,7 @@ FetchContent_MakeAvailable(lufa)
 set(FW_DIR   ${CMAKE_CURRENT_SOURCE_DIR}/SmallyMouse2)
 set(LUFA_DIR ${lufa_SOURCE_DIR}/LUFA)
 
-add_executable(SmallyMouse2
+set(FW_SOURCES
     ${FW_DIR}/main.c
     ${FW_DIR}/ConfigDescriptor.c
     ${FW_DIR}/serial.c
@@ -71,51 +71,6 @@ add_executable(SmallyMouse2
     ${LUFA_DIR}/Drivers/USB/Core/USBTask.c
 )
 
-set_target_properties(SmallyMouse2 PROPERTIES
-    SUFFIX       .elf
-    C_STANDARD   99
-    C_EXTENSIONS ON
-)
-
-target_include_directories(SmallyMouse2 PRIVATE
-    ${FW_DIR}/src
-    ${lufa_SOURCE_DIR}
-    ${FW_DIR}/src/config
-)
-
-target_compile_definitions(SmallyMouse2 PRIVATE
-    ARCH=ARCH_AVR8
-    BOARD=BOARD_NONE
-    F_CPU=${F_CPU}
-    F_USB=${F_CPU}
-    USE_LUFA_CONFIG_HEADER
-    $<$<CONFIG:Debug>:DEBUG>
-)
-
-target_compile_options(SmallyMouse2 PRIVATE
-    -mmcu=${AVR_MCU}
-    -Wall
-    -funsigned-char
-    -funsigned-bitfields
-    -fpack-struct
-    -fshort-enums
-    -ffunction-sections
-    -fdata-sections
-    -fno-strict-aliasing
-    -fno-jump-tables
-    -mrelax
-)
-
-target_link_options(SmallyMouse2 PRIVATE
-    -mmcu=${AVR_MCU}
-    -Wl,--gc-sections
-    -Wl,--relax
-    -Wl,-Map=$<TARGET_FILE_DIR:SmallyMouse2>/SmallyMouse2.map
-    -Wl,--print-memory-usage
-)
-
-target_link_libraries(SmallyMouse2 PRIVATE m)
-
 # LUFA's weak event stubs alias functions of differing signatures, which newer
 # GCC flags; the aliasing is intentional and upstream LUFA is left as-is.
 set_source_files_properties(${LUFA_DIR}/Drivers/USB/Core/Events.c PROPERTIES
@@ -125,90 +80,179 @@ set_source_files_properties(${LUFA_DIR}/Drivers/USB/Core/Events.c PROPERTIES
 set(CMAKE_C_FLAGS_RELEASE "-Os -DNDEBUG")
 set(CMAKE_C_FLAGS_DEBUG   "-O1 -g3")
 
-# ---------------------------------------------------------------------------
-# Programming images
-#   SmallyMouse2.hex  - flash image (JTAG via avrdude and DFU via dfu-programmer)
-#   SmallyMouse2.eep  - EEPROM image
-#   SmallyMouse2.srec - flash image, Motorola S-record
-#   SmallyMouse2.lss  - extended listing
-#   SmallyMouse2.elf  - full image with debug info (Atmel Studio / Microchip Studio can program this directly)
-# ---------------------------------------------------------------------------
-
-set(FW_ELF  $<TARGET_FILE:SmallyMouse2>)
-set(FW_HEX  ${CMAKE_CURRENT_BINARY_DIR}/SmallyMouse2.hex)
-set(FW_EEP  ${CMAKE_CURRENT_BINARY_DIR}/SmallyMouse2.eep)
-set(FW_SREC ${CMAKE_CURRENT_BINARY_DIR}/SmallyMouse2.srec)
-set(FW_LSS  ${CMAKE_CURRENT_BINARY_DIR}/SmallyMouse2.lss)
-
-set(FLASH_SECTIONS -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures)
-
-add_custom_command(TARGET SmallyMouse2 POST_BUILD
-    COMMAND ${CMAKE_OBJCOPY} -O ihex  ${FLASH_SECTIONS} ${FW_ELF} ${FW_HEX}
-    COMMAND ${CMAKE_OBJCOPY} -O srec  ${FLASH_SECTIONS} ${FW_ELF} ${FW_SREC}
-    COMMAND ${CMAKE_OBJCOPY} -O ihex  -j .eeprom --set-section-flags=.eeprom=alloc,load
-                                      --change-section-lma .eeprom=0 --no-change-warnings
-                                      ${FW_ELF} ${FW_EEP}
-    COMMAND ${CMAKE_OBJDUMP} -h -S ${FW_ELF} > ${FW_LSS}
-    COMMAND ${CMAKE_SIZE} ${FW_ELF}
-    BYPRODUCTS ${FW_HEX} ${FW_SREC} ${FW_EEP} ${FW_LSS}
-    VERBATIM
-)
-
-install(FILES ${FW_ELF} ${FW_HEX} ${FW_EEP} ${FW_SREC} ${FW_LSS}
-              ${CMAKE_CURRENT_BINARY_DIR}/SmallyMouse2.map
-        DESTINATION .)
-
 # DFU bootloader image; the nix flake builds it from LUFA and passes its path
 # via SMALLYMOUSE2_BOOTLOADER_HEX (dev shell) or -DBOOTLOADER_HEX (nix build).
-# When set, the firmware is also merged with it into a single flash image so
+# When set, each firmware is also merged with it into a single flash image so
 # that programming over JTAG keeps a working bootloader.
 set(BOOTLOADER_HEX "" CACHE FILEPATH "DFU bootloader image (Intel HEX)")
 if(DEFINED ENV{SMALLYMOUSE2_BOOTLOADER_HEX})
     set(BOOTLOADER_HEX $ENV{SMALLYMOUSE2_BOOTLOADER_HEX})
 endif()
 
-if(BOOTLOADER_HEX)
-    set(FW_BL_HEX ${CMAKE_CURRENT_BINARY_DIR}/SmallyMouse2-with-bootloader.hex)
-    add_custom_command(
-        OUTPUT  ${FW_BL_HEX}
-        COMMAND ${CMAKE_COMMAND} -DFIRMWARE=${FW_HEX} -DBOOTLOADER=${BOOTLOADER_HEX}
-                -DOUTPUT=${FW_BL_HEX} -P ${CMAKE_CURRENT_SOURCE_DIR}/cmake/merge-hex.cmake
-        DEPENDS SmallyMouse2 ${FW_HEX} ${BOOTLOADER_HEX}
-                ${CMAKE_CURRENT_SOURCE_DIR}/cmake/merge-hex.cmake
-        VERBATIM
-    )
-    add_custom_target(firmware-with-bootloader ALL DEPENDS ${FW_BL_HEX})
-    install(FILES ${FW_BL_HEX} DESTINATION .)
-endif()
-
-# ---------------------------------------------------------------------------
-# Flashing targets
-# ---------------------------------------------------------------------------
-
 find_program(AVRDUDE avrdude)
 find_program(DFU_PROGRAMMER dfu-programmer)
 
-if(AVRDUDE)
-    # Atmel-ICE over JTAG. The chip erase this performs also removes the DFU
-    # bootloader, so the bootloader is written back together with the firmware.
+if(NOT AVRDUDE)
+    message(STATUS "avrdude not found: flash-jtag targets unavailable")
+elseif(NOT BOOTLOADER_HEX)
+    message(STATUS "BOOTLOADER_HEX not set: flash-jtag targets will erase the DFU bootloader")
+endif()
+if(NOT DFU_PROGRAMMER)
+    message(STATUS "dfu-programmer not found: flash-dfu targets unavailable")
+endif()
+
+# ---------------------------------------------------------------------------
+# smallymouse2_firmware(<suffix> [<compile definition>...])
+#
+#   Builds the firmware SmallyMouse2<suffix>.elf with the given extra compile
+#   definitions, its programming images and the flash-jtag<suffix> and
+#   flash-dfu<suffix> flashing targets.
+#
+#   Programming images (shown for an empty suffix):
+#     SmallyMouse2.hex  - flash image (JTAG via avrdude and DFU via dfu-programmer)
+#     SmallyMouse2.eep  - EEPROM image
+#     SmallyMouse2.srec - flash image, Motorola S-record
+#     SmallyMouse2.lss  - extended listing
+#     SmallyMouse2.elf  - full image with debug info (Atmel Studio / Microchip Studio can program this directly)
+#     SmallyMouse2-with-bootloader.hex - flash image merged with the DFU bootloader (if BOOTLOADER_HEX is set)
+# ---------------------------------------------------------------------------
+
+function(smallymouse2_firmware suffix)
+    set(name SmallyMouse2${suffix})
+
+    add_executable(${name} ${FW_SOURCES})
+
+    set_target_properties(${name} PROPERTIES
+        SUFFIX       .elf
+        C_STANDARD   99
+        C_EXTENSIONS ON
+    )
+
+    target_include_directories(${name} PRIVATE
+        ${FW_DIR}/src
+        ${lufa_SOURCE_DIR}
+        ${FW_DIR}/src/config
+    )
+
+    target_compile_definitions(${name} PRIVATE
+        ARCH=ARCH_AVR8
+        BOARD=BOARD_NONE
+        F_CPU=${F_CPU}
+        F_USB=${F_CPU}
+        USE_LUFA_CONFIG_HEADER
+        $<$<CONFIG:Debug>:DEBUG>
+        ${ARGN}
+    )
+
+    target_compile_options(${name} PRIVATE
+        -mmcu=${AVR_MCU}
+        -Wall
+        -funsigned-char
+        -funsigned-bitfields
+        -fpack-struct
+        -fshort-enums
+        -ffunction-sections
+        -fdata-sections
+        -fno-strict-aliasing
+        -fno-jump-tables
+        -mrelax
+    )
+
+    target_link_options(${name} PRIVATE
+        -mmcu=${AVR_MCU}
+        -Wl,--gc-sections
+        -Wl,--relax
+        -Wl,-Map=$<TARGET_FILE_DIR:${name}>/${name}.map
+        -Wl,--print-memory-usage
+    )
+
+    target_link_libraries(${name} PRIVATE m)
+
+    set(fw_elf  $<TARGET_FILE:${name}>)
+    set(fw_hex  ${CMAKE_CURRENT_BINARY_DIR}/${name}.hex)
+    set(fw_eep  ${CMAKE_CURRENT_BINARY_DIR}/${name}.eep)
+    set(fw_srec ${CMAKE_CURRENT_BINARY_DIR}/${name}.srec)
+    set(fw_lss  ${CMAKE_CURRENT_BINARY_DIR}/${name}.lss)
+
+    set(flash_sections -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures)
+
+    add_custom_command(TARGET ${name} POST_BUILD
+        COMMAND ${CMAKE_OBJCOPY} -O ihex  ${flash_sections} ${fw_elf} ${fw_hex}
+        COMMAND ${CMAKE_OBJCOPY} -O srec  ${flash_sections} ${fw_elf} ${fw_srec}
+        COMMAND ${CMAKE_OBJCOPY} -O ihex  -j .eeprom --set-section-flags=.eeprom=alloc,load
+                                          --change-section-lma .eeprom=0 --no-change-warnings
+                                          ${fw_elf} ${fw_eep}
+        COMMAND ${CMAKE_OBJDUMP} -h -S ${fw_elf} > ${fw_lss}
+        COMMAND ${CMAKE_SIZE} ${fw_elf}
+        BYPRODUCTS ${fw_hex} ${fw_srec} ${fw_eep} ${fw_lss}
+        VERBATIM
+    )
+
+    install(FILES ${fw_elf} ${fw_hex} ${fw_eep} ${fw_srec} ${fw_lss}
+                  ${CMAKE_CURRENT_BINARY_DIR}/${name}.map
+            DESTINATION .)
+
     if(BOOTLOADER_HEX)
-        add_custom_target(flash-jtag
-            COMMAND ${AVRDUDE} -c ${AVRDUDE_PROGRAMMER} -P ${AVRDUDE_PORT} -p ${AVRDUDE_PART}
-                    -U flash:w:${FW_BL_HEX}:i
-            DEPENDS firmware-with-bootloader
-            USES_TERMINAL
+        set(fw_bl_hex ${CMAKE_CURRENT_BINARY_DIR}/${name}-with-bootloader.hex)
+        add_custom_command(
+            OUTPUT  ${fw_bl_hex}
+            COMMAND ${CMAKE_COMMAND} -DFIRMWARE=${fw_hex} -DBOOTLOADER=${BOOTLOADER_HEX}
+                    -DOUTPUT=${fw_bl_hex} -P ${CMAKE_CURRENT_SOURCE_DIR}/cmake/merge-hex.cmake
+            DEPENDS ${name} ${fw_hex} ${BOOTLOADER_HEX}
+                    ${CMAKE_CURRENT_SOURCE_DIR}/cmake/merge-hex.cmake
             VERBATIM
         )
-    else()
-        message(STATUS "BOOTLOADER_HEX not set: flash-jtag will erase the DFU bootloader")
-        add_custom_target(flash-jtag
-            COMMAND ${AVRDUDE} -c ${AVRDUDE_PROGRAMMER} -P ${AVRDUDE_PORT} -p ${AVRDUDE_PART}
-                    -U flash:w:${FW_HEX}:i
-            DEPENDS SmallyMouse2
+        add_custom_target(${name}-with-bootloader ALL DEPENDS ${fw_bl_hex})
+        install(FILES ${fw_bl_hex} DESTINATION .)
+    endif()
+
+    if(AVRDUDE)
+        # Atmel-ICE over JTAG. The chip erase this performs also removes the DFU
+        # bootloader, so the bootloader is written back together with the firmware.
+        if(BOOTLOADER_HEX)
+            add_custom_target(flash-jtag${suffix}
+                COMMAND ${AVRDUDE} -c ${AVRDUDE_PROGRAMMER} -P ${AVRDUDE_PORT} -p ${AVRDUDE_PART}
+                        -U flash:w:${fw_bl_hex}:i
+                DEPENDS ${name}-with-bootloader
+                USES_TERMINAL
+                VERBATIM
+            )
+        else()
+            add_custom_target(flash-jtag${suffix}
+                COMMAND ${AVRDUDE} -c ${AVRDUDE_PROGRAMMER} -P ${AVRDUDE_PORT} -p ${AVRDUDE_PART}
+                        -U flash:w:${fw_hex}:i
+                DEPENDS ${name}
+                USES_TERMINAL
+                VERBATIM
+            )
+        endif()
+    endif()
+
+    if(DFU_PROGRAMMER)
+        # Factory Atmel (FLIP) DFU bootloader over USB.
+        add_custom_target(flash-dfu${suffix}
+            COMMAND ${DFU_PROGRAMMER} ${DFU_TARGET} erase --force
+            COMMAND ${DFU_PROGRAMMER} ${DFU_TARGET} flash ${fw_hex}
+            COMMAND ${DFU_PROGRAMMER} ${DFU_TARGET} launch
+            DEPENDS ${name}
             USES_TERMINAL
             VERBATIM
         )
     endif()
+endfunction()
+
+# Normal firmware: SmallyMouse2.hex, flashed with flash-jtag / flash-dfu
+smallymouse2_firmware("")
+
+# Middle and right buttons reversed (e.g. for Domesday AIV trackball replacements):
+# SmallyMouse2-swapped.hex, flashed with flash-jtag-swapped / flash-dfu-swapped
+smallymouse2_firmware(-swapped SWAP_MIDDLE_RIGHT)
+
+# ---------------------------------------------------------------------------
+# Other programming targets
+# ---------------------------------------------------------------------------
+
+if(AVRDUDE)
     add_custom_target(read-fuses-jtag
         COMMAND ${AVRDUDE} -c ${AVRDUDE_PROGRAMMER} -P ${AVRDUDE_PORT} -p ${AVRDUDE_PART}
                 -U lfuse:r:-:h -U hfuse:r:-:h -U efuse:r:-:h -U lock:r:-:h
@@ -229,20 +273,4 @@ if(AVRDUDE)
     else()
         message(STATUS "BOOTLOADER_HEX not set: flash-bootloader-jtag target unavailable")
     endif()
-else()
-    message(STATUS "avrdude not found: flash-jtag target unavailable")
-endif()
-
-if(DFU_PROGRAMMER)
-    # Factory Atmel (FLIP) DFU bootloader over USB.
-    add_custom_target(flash-dfu
-        COMMAND ${DFU_PROGRAMMER} ${DFU_TARGET} erase --force
-        COMMAND ${DFU_PROGRAMMER} ${DFU_TARGET} flash ${FW_HEX}
-        COMMAND ${DFU_PROGRAMMER} ${DFU_TARGET} launch
-        DEPENDS SmallyMouse2
-        USES_TERMINAL
-        VERBATIM
-    )
-else()
-    message(STATUS "dfu-programmer not found: flash-dfu target unavailable")
 endif()

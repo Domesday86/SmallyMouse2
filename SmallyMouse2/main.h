@@ -106,7 +106,6 @@ void initialiseHardware(void);
 void initialiseTimers(void);
 void processMouse(void);
 uint8_t mapButtons(uint8_t buttons);
-void setButtonMapping(uint16_t vendorId, uint16_t productId);
 void reportButtons(uint8_t buttons);
 void startQuadratureTimers(void);
 uint16_t processMouseMovement(int8_t movementUnits, uint8_t axis, bool limitRate, bool dpiDivide);
