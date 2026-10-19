@@ -49,38 +49,13 @@
 #define BUTTON_RIGHT	0x02
 #define BUTTON_MIDDLE	0x04
 
-// Button mapping exceptions
+// Button mapping
 //
-// Some USB mice report their buttons on unexpected report bits (for example a trackball
-// where the two buttons reported as left and right are both on the same side of the ball).
-// Mice listed here (identified by their USB VID:PID) have their report button bits remapped
-// before they are output.
-//
-// buttonMap gives, for each report bit (0-7), the report bit it is output as.  The quadrature
-// mouse buttons are output from bit 0 (left), bit 1 (right) and bit 2 (middle).  More than one
-// report bit can be mapped to the same output bit.  An unlisted mouse uses the report bits
-// as they are.
-//
-// The debug console shows the VID:PID when a mouse is attached and the report bits of any
-// pressed buttons.
-typedef struct {
-	uint16_t vendorId;
-	uint16_t productId;
-	uint8_t buttonMap[8];
-} ButtonMapping_t;
-
-// The following button mapping exceptions are only for the wired and wireless Kensington expert mice.
-// The reason is Domesday AIV systems RB2 trackballs have a odd layout and these devices are used as
-// replacements.  Remapping is based on VID:PID, so other mice will be unaffected.
-static const ButtonMapping_t buttonMappings[] PROGMEM = {
-	// Kensington Expert Mouse: bit 0 is output as right, bits 1 and 2 as left and bit 3 as middle
-	{ 0x047D, 0x1020, { 1, 0, 0, 2, 4, 5, 6, 7 } },
-	// Kensington Expert Mouse Wireless: as the wired version
-	{ 0x047D, 0x8018, { 1, 0, 0, 2, 4, 5, 6, 7 } },
-};
-
-// Button mapping for the attached mouse (set on enumeration)
-uint8_t buttonMap[8] = { 0, 1, 2, 3, 4, 5, 6, 7 };
+// Some uses need the middle and right buttons reversed (for example Domesday AIV systems,
+// where the RB2 trackball has an odd button layout).  This is selected at build time rather
+// than per mouse: SWAP_MIDDLE_RIGHT is defined by the build system for the swapped firmware
+// image (SmallyMouse2-swapped, see CMakeLists.txt), and the normal image outputs the USB
+// mouse report buttons as they are.
 
 // Configuration ------------------------------------------------------------------------------------------------------
 
@@ -150,7 +125,7 @@ uint8_t buttonMap[8] = { 0, 1, 2, 3, 4, 5, 6, 7 };
 //
 // Uncomment the following to show the USB mouse report button state on the debug console
 // whenever it changes (each pressed button's report bit and the quadrature mouse button it
-// is output as).  This is useful for working out the button mapping exception for a mouse.
+// is output as).
 //#define DEBUG_BUTTONS
 
 // Quadrature output timer ---------------------------------------------------------------------------------------------
@@ -409,6 +384,9 @@ void initialiseHardware(void)
 	else puts_P(PSTR("Rate limit switch is OFF\r\n"));
 	if ((DPISW_PIN & DPISW) == 0) puts_P(PSTR("DPI divide switch is ON\r\n"));
 	else puts_P(PSTR("DPI divide switch is OFF\r\n"));
+#ifdef SWAP_MIDDLE_RIGHT
+	puts_P(PSTR("Middle and right buttons are swapped\r\n"));
+#endif
 }
 
 // Initialise the ISR timers
@@ -615,32 +593,18 @@ void processMouse(void)
 	Pipe_Freeze();
 }
 
-// Map the USB mouse report button bits using the attached mouse's button mapping
+// Map the USB mouse report button bits to the quadrature mouse buttons
 uint8_t mapButtons(uint8_t buttons)
 {
-	uint8_t mapped = 0;
-
-	for (uint8_t bit = 0; bit < 8; bit++) {
-		if (buttons & (1 << bit)) mapped |= (1 << buttonMap[bit]);
-	}
-
+#ifdef SWAP_MIDDLE_RIGHT
+	// Exchange the middle and right button bits
+	uint8_t mapped = buttons & ~(BUTTON_RIGHT | BUTTON_MIDDLE);
+	if (buttons & BUTTON_RIGHT) mapped |= BUTTON_MIDDLE;
+	if (buttons & BUTTON_MIDDLE) mapped |= BUTTON_RIGHT;
 	return mapped;
-}
-
-// Set the button mapping for the attached mouse from the button mapping exceptions
-void setButtonMapping(uint16_t vendorId, uint16_t productId)
-{
-	// Default to the report bits as they are
-	for (uint8_t bit = 0; bit < 8; bit++) buttonMap[bit] = bit;
-
-	for (uint8_t i = 0; i < (sizeof(buttonMappings) / sizeof(buttonMappings[0])); i++) {
-		if ((pgm_read_word(&buttonMappings[i].vendorId) == vendorId) &&
-			(pgm_read_word(&buttonMappings[i].productId) == productId)) {
-			memcpy_P(buttonMap, buttonMappings[i].buttonMap, sizeof(buttonMap));
-			printf_P(PSTR("Using button mapping exception for this device\r\n"));
-			return;
-		}
-	}
+#else
+	return buttons;
+#endif
 }
 
 #ifdef DEBUG_BUTTONS
@@ -664,7 +628,7 @@ void reportButtons(uint8_t buttons)
 	for (uint8_t bit = 0; bit < 8; bit++) {
 		if ((buttons & (1 << bit)) == 0) continue;
 
-		uint8_t mask = (1 << buttonMap[bit]);
+		uint8_t mask = mapButtons(1 << bit);
 		if (mask == BUTTON_LEFT) printf_P(PSTR(" %d=Left"), bit);
 		else if (mask == BUTTON_MIDDLE) printf_P(PSTR(" %d=Middle"), bit);
 		else if (mask == BUTTON_RIGHT) printf_P(PSTR(" %d=Right"), bit);
@@ -818,18 +782,15 @@ void EVENT_USB_Host_DeviceEnumerationComplete(void)
 
 	uint8_t ErrorCode;
 
-	// Get the device descriptor, report the device's VID/PID and select any button
-	// mapping exception for it.  A failure here is not fatal (the default button
-	// mapping is used).
+	// Get the device descriptor and report the device's VID/PID.  A failure here is
+	// not fatal (the descriptor is only used for the debug console).
 	USB_Descriptor_Device_t DeviceDescriptor;
 	if ((ErrorCode = USB_Host_GetDeviceDescriptor(&DeviceDescriptor)) == HOST_SENDCONTROL_Successful) {
 		printf_P(PSTR("Device VID:PID = %04X:%04X (release %04X)\r\n"),
 			DeviceDescriptor.VendorID, DeviceDescriptor.ProductID, DeviceDescriptor.ReleaseNumber);
-		setButtonMapping(DeviceDescriptor.VendorID, DeviceDescriptor.ProductID);
 	} else {
 		printf_P(PSTR(ESC_FG_RED "Control Error (Get device descriptor)!\r\n"
 		                         " -- Error Code: %d\r\n" ESC_FG_WHITE), ErrorCode);
-		setButtonMapping(0, 0);
 	}
 
 	/* Get and process the configuration descriptor data */

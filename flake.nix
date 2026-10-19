@@ -136,13 +136,28 @@
             type = "app";
             program = nixpkgs.lib.getExe (pkgs.writeShellApplication { inherit name runtimeInputs text; });
           };
-        in
-        {
+
           # Atmel-ICE over JTAG. The chip erase also removes the DFU bootloader, so
           # the firmware is written merged with the LUFA DFU bootloader.
-          flash-jtag = mkApp "smallymouse2-flash-jtag" [ pkgs.avrdude ] ''
-            avrdude -c atmelice -P usb -p usb1287 -U flash:w:${firmware}/SmallyMouse2-with-bootloader.hex:i "$@"
+          mkFlashJtag = suffix: mkApp "smallymouse2-flash-jtag${suffix}" [ pkgs.avrdude ] ''
+            avrdude -c atmelice -P usb -p usb1287 -U flash:w:${firmware}/SmallyMouse2${suffix}-with-bootloader.hex:i "$@"
           '';
+
+          # Factory Atmel (FLIP) DFU bootloader over USB.
+          mkFlashDfu = suffix: mkApp "smallymouse2-flash-dfu${suffix}" [ pkgs.dfu-programmer ] ''
+            dfu-programmer at90usb1287 erase --force
+            dfu-programmer at90usb1287 flash ${firmware}/SmallyMouse2${suffix}.hex
+            dfu-programmer at90usb1287 launch
+          '';
+        in
+        {
+          # Normal firmware
+          flash-jtag = mkFlashJtag "";
+          flash-dfu = mkFlashDfu "";
+
+          # Firmware with the middle and right buttons reversed
+          flash-jtag-swapped = mkFlashJtag "-swapped";
+          flash-dfu-swapped = mkFlashDfu "-swapped";
 
           # Restore a DFU bootloader over JTAG: chip erase, write the bootloader and
           # set the factory hfuse/efuse (8 KB boot section, BOOTRST unprogrammed,
@@ -151,13 +166,6 @@
             avrdude -c atmelice -P usb -p usb1287 -e \
               -U flash:w:${bootloader}/BootloaderDFU.hex:i \
               -U hfuse:w:0x99:m -U efuse:w:0xF3:m "$@"
-          '';
-
-          # Factory Atmel (FLIP) DFU bootloader over USB.
-          flash-dfu = mkApp "smallymouse2-flash-dfu" [ pkgs.dfu-programmer ] ''
-            dfu-programmer at90usb1287 erase --force
-            dfu-programmer at90usb1287 flash ${firmware}/SmallyMouse2.hex
-            dfu-programmer at90usb1287 launch
           '';
         });
 

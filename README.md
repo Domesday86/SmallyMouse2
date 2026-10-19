@@ -36,6 +36,8 @@ The output is written to `build/release/`:
 | `SmallyMouse2.lss`  | Extended listing                                                    |
 | `SmallyMouse2.map`  | Linker map                                                          |
 
+Two firmware images are built from the same source. `SmallyMouse2` is the normal firmware; `SmallyMouse2-swapped` has the middle and right mouse buttons reversed (for example, for Kensington Expert Mouse trackballs used as replacements for the Domesday AIV system's RB2 trackball). Each image has the same set of files, so `SmallyMouse2-swapped.hex`, `SmallyMouse2-swapped-with-bootloader.hex`, and so on, sit next to the files above.
+
 Alternatively `nix build` produces the same files in `./result/` without entering a shell.
 
 Without Nix, any avr-gcc toolchain, CMake 3.24+ and Ninja on the `PATH` will work with the same commands.
@@ -47,6 +49,8 @@ Connect the Atmel-ICE to the JTAG header, then:
     cmake --build --preset release --target flash-jtag
 
 or, without a build tree, `nix run .#flash-jtag`. The fuses and lock bits can be read with the `read-fuses-jtag` target.
+
+To flash the firmware with the middle and right buttons swapped, use `flash-jtag-swapped` (or `nix run .#flash-jtag-swapped`) instead.
 
 Programming over JTAG performs a chip erase, which also removes the DFU bootloader, so `flash-jtag` writes `SmallyMouse2-with-bootloader.hex` (the firmware merged with the LUFA DFU bootloader) and the board can still be updated over USB afterwards. The bootloader image comes from the Nix flake; without it (`BOOTLOADER_HEX` unset) `flash-jtag` writes the firmware alone and the bootloader is lost.
 
@@ -65,6 +69,8 @@ Put the AT90USB1287 into its factory DFU bootloader (hold HWB low while resettin
     cmake --build --preset release --target flash-dfu
 
 or `nix run .#flash-dfu`. The device is erased, programmed and then started.
+
+To flash the firmware with the middle and right buttons swapped, use `flash-dfu-swapped` (or `nix run .#flash-dfu-swapped`) instead.
 
 ### USB permissions (udev)
 
